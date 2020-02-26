@@ -1,0 +1,34 @@
+Sprite Sheet Reference Supplement
+Color Code:
+Sprite Size: Green
+Hitbox : Red
+Ice Pick Hitbox: Blue
+Ledger:
+R - Ref
+J - Jump frame
+U - Look Up
+D - Look Down
+C - Look Towards Camera: Idling Frame
+F1 - Fall Frame 1
+F2 - Fall Frame 2
+L - Landing frame
+W1 - Walk Cycle 1
+W2 - Walk Cycle 2
+W3 - Walk Cycle 3 - Identical to R
+W4 - Walk Cycle 4
+W5 - Walk Cycle 5
+A1 - Ice Pick Frame 1
+A2 - Ice Pick Frame 2
+A3 - Ice Pick Frame 3
+A4 - Ice Pick Frame 4 - Fall Frame 1
+A5 - Ice Pick Frame 5 - Fall Frame 2
+A6 - Ice Pick Frame 6 - ‘Latch’ Frame
+T1 - Item Frame 1
+T2 - Item Frame 2
+T3 - Item Frame 3
+F1 - Finish Frame 1 - Success
+F2 - Finish Frame 2 - Success
+F3 - Finish Frame 3 - Success
+Z1 - Finish Frame 1 - Loss
+Z2 - Finish Frame 2 - Loss
+Z3 - Finish Frame 3 - Loss
