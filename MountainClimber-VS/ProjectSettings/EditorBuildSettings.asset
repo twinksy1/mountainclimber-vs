@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 53be02ea422e43345b87cae5b4f5a87e
   - enabled: 1
+    path: Assets/Scenes/ScollingTest.unity
+    guid: 6ee864bc65a677e42a31a0558e7d2314
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 52c50f4e5ac2af74588a488b9ebf57e8
   m_configObjects: {}
