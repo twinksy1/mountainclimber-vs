@@ -60,7 +60,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Character Movement
+        /* AM 03-08-20 - Move character by a certain amount (horizontalMove)
+         multiply it by the amount of time that has elapsed
+         sense the last time fixedupdate was called. This
+         ensures that the movement is the same no matter
+         the amount of times FixedUpdate was called */
         controller.Move(horizontalMove*Time.fixedDeltaTime, false, jump);
         jump = false;
     }
