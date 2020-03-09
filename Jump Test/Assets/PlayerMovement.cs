@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
+// AM 03-09-20 - added some clarifying comments on variables and functions
+
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
@@ -16,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     bool lookDown = false;
     bool lookUp = false;
 
-
+    // AM 03-09-20 - ??? This looks like a
+    // function that might only be called at the start of the game
     public void OnLanding()
     {
         animator.SetBool("IsJump", false);
@@ -25,10 +28,15 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-       
+        // AM 03-09-20 - horizonalMove gets the raw input of the player
+        // (left is -1 right is 1) * the run speed to control how fast the player moves
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        // AM 03-09-20 - .GetButtonDown("button name")
+        // returns true when the player presses on the given button
+        // AM 03-09-20 - .GetButtonUp(" button name ")
+        // returns true if the player releases the given button
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;
