@@ -252,11 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d3458dd42df7a48b78a1dae236b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   speed: 0.1
-=======
-  speed: 0.05
->>>>>>> Stashed changes
 --- !u!1001 &2369434047827655303
 PrefabInstance:
   m_ObjectHideFlags: 0
