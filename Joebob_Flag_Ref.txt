@@ -14,15 +14,19 @@ F2 - Fall Frame 2
 L - Landing frame
 W1 - Walk Cycle 1
 W2 - Walk Cycle 2
-W3 - Walk Cycle 3 - Identical to R
+W3 - Walk Cycle 3
 W4 - Walk Cycle 4
 W5 - Walk Cycle 5
-A1 - Ice Pick Frame 1
-A2 - Ice Pick Frame 2
-A3 - Ice Pick Frame 3
-A4 - Ice Pick Frame 4 - Fall Frame 1
-A5 - Ice Pick Frame 5 - Fall Frame 2
-A6 - Ice Pick Frame 6 - ‘Latch’ Frame
+W6 - Walk Cycle 6
+A1 - Ice Pick Air Frame 1
+A2 - Ice Pick Air Frame 2
+A3 - Ice Pick Air Frame 3
+A4 - Ice Pick Air Frame 4 - Fall Frame 1
+A5 - Ice Pick Air Frame 5 - Fall Frame 2
+A6 - Ice Pick AirFrame 6 - ‘Latch’ Frame
+P1 - Ice Pick Ground Frame 1
+P2 - Ice Pick Ground Frame 2
+P3 - Ice Pick Ground Frame 3
 T1 - Item Frame 1
 T2 - Item Frame 2
 T3 - Item Frame 3
