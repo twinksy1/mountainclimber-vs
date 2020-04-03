@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class generator : MonoBehaviour
 {
-    [SerializeField] private Transform block;
+    [SerializeField] private List<Transform> blockList;
     [SerializeField] private Transform start;
 
     private int gameLength = 8;
@@ -19,7 +19,7 @@ public class generator : MonoBehaviour
         }
     }
 
-    private Transform generateBlock(Vector3 position)
+    private Transform generateBlock(Transform block, Vector3 position)
     {
         Transform nextPart;
         nextPart = Instantiate(block, position, Quaternion.identity);
@@ -28,7 +28,8 @@ public class generator : MonoBehaviour
 
     private void generateBlock()
     {
-        Transform nextPart = generateBlock(endPos);
+        Transform chosen = blockList[Random.Range(0, blockList.Count)];
+        Transform nextPart = generateBlock(chosen, endPos);
         endPos = nextPart.Find("End").position;
     }
 }
