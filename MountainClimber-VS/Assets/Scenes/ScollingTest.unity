@@ -158,13 +158,14 @@ GameObject:
   - component: {fileID: 371157220}
   - component: {fileID: 371157219}
   - component: {fileID: 371157218}
+  - component: {fileID: 371157223}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &371157217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -280,6 +281,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!95 &371157223
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371157216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13efb84639adfc94199cbed51015d560, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &541730053
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -350,10 +370,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'OOFFF
 
-    GAME OVER
-
-
-    RESTARTING IN 5 SECONDS'
+    GAME OVER'
 --- !u!222 &541730056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -541,8 +558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 352.7, y: 228.7}
-  m_SizeDelta: {x: 226.6, y: 66.6}
+  m_AnchoredPosition: {x: -233.00002, y: 131}
+  m_SizeDelta: {x: 466, y: 262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615190110
 MonoBehaviour:
@@ -1089,9 +1106,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 623827578}
   p1Score: 0
+  p2Score: 0
   cam: {fileID: 2005723016}
+  secondsTilRestart: 2
   score: {fileID: 615190110}
   gameover_ui: {fileID: 371157216}
+  gameover_text: {fileID: 541730055}
 --- !u!4 &2022219771
 Transform:
   m_ObjectHideFlags: 0

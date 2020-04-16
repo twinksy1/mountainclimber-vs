@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     //public GameObject player2;
 
     // Scores
-    public int p1Score;
-    //public int p2Score;
+    public int p1Score = 0;
+    public int p2Score = 0;
 
     // References main camera
     public Camera cam;
@@ -24,19 +24,28 @@ public class GameManager : MonoBehaviour
     public const float verticalMaxDist = 9.0f;
     public const float horizontalMaxDist = 15.0f;
 
+    // UI Mechanics
+    public float secondsTilRestart = 2f;
     public Text score;
     public GameObject gameover_ui;
+    public Text gameover_text;
+    string[] gameover_displays = new string[5] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n", "Have a nice trip, see you next fall!\n" };
+    int show;
 
     void Start()
     {
         gameover_ui.SetActive(false);
+        show = Random.Range(0, 5);
     }
 
     void Update()
     {
-        // Update score every frame
-        p1Score = (int)(player1.transform.position.y - scoreOffset);
-        //p2Score = (int)(player2.transform.position.y - scoreOffset);
+        // Update scores every frame
+        int new_p1Score = (int)(player1.transform.position.y - scoreOffset);
+        if (new_p1Score > p1Score) p1Score = new_p1Score;
+
+        //int new_p2Score = (int)(player2.transform.position.y - scoreOffset);
+        //if (new_p2Score > p2Score) p2Score = new_p2Score;
 
         // Player 1
 
@@ -68,16 +77,29 @@ public class GameManager : MonoBehaviour
         }
         */
 
-        score.text = "Player 1: " + p1Score + "\nPlayer 2: ";
+        if(p1Score > p2Score)
+        {
+            score.text = "Player 1 is beating Player 2 :O\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score;
+        } else if(p2Score > p1Score)
+        {
+            score.text = "Player 2 is owning Player 1 :O\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score;
+        } else
+        {
+            score.text = "The race is neck to neck :O\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score;
+        }
+
     }
 
     IEnumerator delayTilRestart()
     {
+        gameover_text.text = gameover_displays[show] + "\n\nPlayer 1: " + p1Score.ToString() + "\nPlayer 2: " + p2Score.ToString();
+
         // Display some death message
         gameover_ui.SetActive(true);
 
-        // Wait for 5 seconds
-        yield return new WaitForSeconds(5);
+        // Wait
+        yield return new WaitForSeconds(secondsTilRestart);
+
         // Restart the scene
         restartScene();
     }
