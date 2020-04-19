@@ -1114,7 +1114,7 @@ MonoBehaviour:
   cam: {fileID: 2005723016}
   secondsTilRestart: 2
   score: {fileID: 615190110}
-  gameover_ui: {fileID: 371157216}
+  gameover_ui: {fileID: 941550350}
   gameover_text: {fileID: 541730055}
 --- !u!4 &2022219771
 Transform:
