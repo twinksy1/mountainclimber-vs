@@ -508,7 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4d53a6352baa0448860250c47ab67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockList: []
+  blockList:
+  - {fileID: 2124444859958938351, guid: cf979f5dfb6138c4cba93510b24f9aa0, type: 3}
+  - {fileID: 4486203615635921970, guid: 43c1374db58265d4097b606939d89f11, type: 3}
   start: {fileID: 8287446163188675665, guid: 7f6677fd3036a5045a62b65dc2c770dc, type: 3}
 --- !u!4 &570693155
 Transform:

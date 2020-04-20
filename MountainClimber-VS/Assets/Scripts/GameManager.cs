@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+// AM: 04-20-20 tried to make a few names more human readable
 public class GameManager : MonoBehaviour
 {
     // References player objects
@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     //public GameObject player2;
 
     // Scores
-    public int p1Score = 0;
-    public int p2Score = 0;
+    public int player1Score = 0;
+    public int player2Score = 0;
 
     // References main camera
     public Camera cam;
@@ -41,8 +41,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Update scores every frame
-        int new_p1Score = (int)(player1.transform.position.y - scoreOffset);
-        if (new_p1Score > p1Score) p1Score = new_p1Score;
+        int new_player1_score = (int)(player1.transform.position.y - scoreOffset);
+        if (new_player1_score > player1Score)
+        {
+            player1Score = new_player1_score;
+        }
 
         //int new_p2Score = (int)(player2.transform.position.y - scoreOffset);
         //if (new_p2Score > p2Score) p2Score = new_p2Score;
@@ -61,7 +64,7 @@ public class GameManager : MonoBehaviour
             // Stop Player 1 movement
             player1.GetComponent<PlayerMovement>().enabled = false;
 
-            StartCoroutine(delayTilRestart());
+            StartCoroutine(DelayTilRestart());
         }
 
         // Player 2 
@@ -77,22 +80,22 @@ public class GameManager : MonoBehaviour
         }
         */
 
-        if(p1Score > p2Score)
+        if(player1Score > player2Score)
         {
-            score.text = "Player 1 is beating Player 2 :O\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score;
-        } else if(p2Score > p1Score)
+            score.text = "Player 1 is beating Player 2 :O\nPlayer 1: " + player1Score + "\nPlayer 2: " + player2Score;
+        } else if(player2Score > player1Score)
         {
-            score.text = "Player 2 is owning Player 1 :O\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score;
+            score.text = "Player 2 is owning Player 1 :O\nPlayer 1: " + player1Score + "\nPlayer 2: " + player2Score;
         } else
         {
-            score.text = "The race is neck to neck :O\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score;
+            score.text = "The race is neck to neck :O\nPlayer 1: " + player1Score + "\nPlayer 2: " + player2Score;
         }
 
     }
 
-    IEnumerator delayTilRestart()
+    IEnumerator DelayTilRestart()
     {
-        gameover_text.text = gameover_displays[show] + "\n\nPlayer 1: " + p1Score.ToString() + "\nPlayer 2: " + p2Score.ToString();
+        gameover_text.text = gameover_displays[show] + "\n\nPlayer 1: " + player1Score.ToString() + "\nPlayer 2: " + player2Score.ToString();
 
         // Display some death message
         gameover_ui.SetActive(true);
@@ -101,10 +104,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(secondsTilRestart);
 
         // Restart the scene
-        restartScene();
+        RestartScene();
     }
 
-    public void restartScene()
+    public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
