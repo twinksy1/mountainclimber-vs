@@ -2,4 +2,4 @@
 Project for our software engineering course
 
 # How to build on Unity
-<a href="https://imgflip.com/gif/3xfb6x"><img src="https://imgflip.com/gif/3xfb6x" /></a>
+<a href="https://imgflip.com/gif/3xfb6x"><img src="https://imgflip.com/gif/3xfb6x"/> via Imgflip</a>
