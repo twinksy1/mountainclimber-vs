@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Crate
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 245647939
+    locked: 0
+  - name: Player
+    uniqueID: 3465870935
+    locked: 0
+  - name: Objects
+    uniqueID: 175089841
+    locked: 0
+  - name: UI
+    uniqueID: 4125827413
     locked: 0
