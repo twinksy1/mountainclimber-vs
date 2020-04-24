@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 // Maintained by: Juan Villasenor
 // AM: 04-20-20 tried to make a few names more human readable
 public class GameManager : MonoBehaviour
@@ -30,16 +31,16 @@ public class GameManager : MonoBehaviour
 
     // UI Mechanics
     public float secondsTilRestart = 2f;
-    public Text score;
+    public TextMeshProUGUI score;
     public GameObject gameover_ui;
-    public Text gameover_text;
-    string[] gameover_displays = new string[5] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n", "Have a nice trip, see you next fall!\n" };
+    public TextMeshProUGUI gameover_text;
+    string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n"};
     int show;
 
     void Start()
     {
         gameover_ui.SetActive(false);
-        show = Random.Range(0, 5);
+        show = Random.Range(0, 4);
     }
 
     void Update()
@@ -95,18 +96,20 @@ public class GameManager : MonoBehaviour
          *  p2BonusScore += 10;
          * }
          */
+        /*
+       if(p1Score > p2Score)
+       {
+           score.text = "Player 1 is beating Player 2 :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
+       } else if(p2Score > p1Score)
+       {
+           score.text = "Player 2 is owning Player 1 :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
+       } else
+       {
+           score.text = "The race is neck to neck :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
+       }
+       */
 
-        if(p1Score > p2Score)
-        {
-            score.text = "Player 1 is beating Player 2 :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
-        } else if(p2Score > p1Score)
-        {
-            score.text = "Player 2 is owning Player 1 :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
-        } else
-        {
-            score.text = "The race is neck to neck :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
-        }
-
+        score.text = "Player 1: " + (p1Score + p1BonusScore) + "\nPlayer 2: " + (p2Score + p2BonusScore);
     }
 
     IEnumerator DelayTilRestart()
@@ -115,6 +118,7 @@ public class GameManager : MonoBehaviour
 
         // Display some death message
         gameover_ui.SetActive(true);
+        score.enabled = false;
 
         // Wait
         yield return new WaitForSeconds(secondsTilRestart);
