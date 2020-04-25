@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
        }
        */
 
-        score.text = "Player 1: " + (p1Score + p1BonusScore) + "\nPlayer 2: " + (p2Score + p2BonusScore);
+        score.text = "Player 1: " + (p1Score + p1BonusScore) + "\n\n\nPlayer 2: " + (p2Score + p2BonusScore);
     }
 
     IEnumerator DelayTilRestart()
