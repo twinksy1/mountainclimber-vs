@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+// Maintained by: Juan Villasenor
 // AM: 04-20-20 tried to make a few names more human readable
 public class GameManager : MonoBehaviour
 {
@@ -52,10 +53,10 @@ public class GameManager : MonoBehaviour
 
         // Player 1
 
-        float ydist = Mathf.Abs(player1.transform.position.y - cam.transform.position.y);
+        //float ydist = player1.transform.position.y - cam.transform.position.y;
         float xdist = Mathf.Abs(player1.transform.position.x - cam.transform.position.x);
 
-        if(ydist > verticalMaxDist || xdist > horizontalMaxDist)
+        if(player1.transform.position.y <= cam.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 1 is out of bounds
             Debug.Log("Player 1 is out of bounds");
