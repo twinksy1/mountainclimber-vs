@@ -1118,8 +1118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 623827578}
-  player1Score: 0
-  player2Score: 0
+  p1Score: 0
+  p2Score: 0
   cam: {fileID: 2005723016}
   secondsTilRestart: 2
   score: {fileID: 615190110}
