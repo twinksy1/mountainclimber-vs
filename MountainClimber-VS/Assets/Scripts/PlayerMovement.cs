@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
+//PM 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
+//              Did not remove or alter any other code - Juan
+
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
@@ -16,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     bool lookDown = false;
     bool lookUp = false;
     bool locationLock = false;
+
+    private bool recieveBonus = false;
 
     public void OnLanding()
     {
@@ -85,5 +90,23 @@ public class PlayerMovement : MonoBehaviour
         //Character Movement
         controller.Move(horizontalMove*Time.fixedDeltaTime, jump);
         jump = false;
+    }
+
+
+    // Bonus Score Points
+    public void setBonusPoints()
+    {
+        recieveBonus = true;
+    }
+
+    public bool checkBonus()
+    {
+        if (recieveBonus == true)
+        {
+            recieveBonus = false;
+            return true;
+        }
+        else
+            return false;
     }
 }
