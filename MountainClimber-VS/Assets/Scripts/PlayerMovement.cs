@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     bool lookUp = false;
     bool locationLock = false;
 
-    public bool recieveBonus = false;
+    private bool recieveBonus = false;
 
     public void OnLanding()
     {
