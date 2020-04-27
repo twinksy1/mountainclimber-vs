@@ -510,10 +510,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockList:
   - {fileID: 2124444859958938351, guid: cf979f5dfb6138c4cba93510b24f9aa0, type: 3}
-  - {fileID: 4486203615635921970, guid: 43c1374db58265d4097b606939d89f11, type: 3}
+  - {fileID: 4485124849204309423, guid: f9afdf5e1d57e0d4eb8e9e8147d24e3e, type: 3}
+  - {fileID: 4486203615635921970, guid: 244f8e5fa4082c2419f3c4a017f9fbc9, type: 3}
+  - {fileID: 947081794472617592, guid: e4ba9b2380f8be74da6eb8a4fac10ed2, type: 3}
   - {fileID: 4486203615635921970, guid: 06d32b87e33ce574293913e2d07dd609, type: 3}
+  - {fileID: 7425246262416171383, guid: 18745af83cc44b340adbb237d5ba513d, type: 3}
   - {fileID: 4486203615635921970, guid: dce9dac3f19efe44093dccda4106fe6e, type: 3}
+  - {fileID: 2169345028530244864, guid: e309d9b6e8e2b1c4bbc692b473d44188, type: 3}
+  - {fileID: 1761342503030350458, guid: 51feb1714108b9248bb6e8fb72d000ca, type: 3}
+  - {fileID: 4486203615635921970, guid: 32ba766bfda80f44f86fd0b330d442db, type: 3}
+  - {fileID: 5721675360173603286, guid: fd902f7d237f656499e8a79f3384692d, type: 3}
+  - {fileID: 4299944567539252886, guid: 2e7ac7e37edfac04bbd58b7779ec926c, type: 3}
   start: {fileID: 8287446163188675665, guid: 7f6677fd3036a5045a62b65dc2c770dc, type: 3}
+  player: {fileID: 623827586}
 --- !u!4 &570693155
 Transform:
   m_ObjectHideFlags: 0
@@ -1109,8 +1118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 623827578}
-  p1Score: 0
-  p2Score: 0
+  player1Score: 0
+  player2Score: 0
   cam: {fileID: 2005723016}
   secondsTilRestart: 2
   score: {fileID: 615190110}
