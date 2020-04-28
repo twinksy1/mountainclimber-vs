@@ -29,7 +29,7 @@ public class Crate_Properties : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         // Collision detection
-        if (collisionInfo.gameObject.tag == "Player" && //collisionInfo.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.0f &&
+        if ((collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo") && //collisionInfo.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.0f &&
             collisionInfo.gameObject.GetComponent<Transform>().position.y > t.position.y+offset)
         {
             Debug.Log("COLLISION WITH CRATE");

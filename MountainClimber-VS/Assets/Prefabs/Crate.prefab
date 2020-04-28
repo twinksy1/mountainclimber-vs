@@ -292,9 +292,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8490226941351730244}
+  t: {fileID: 0}
   box_collider: {fileID: 8490226941351730297}
   rb: {fileID: 8490226941351730246}
-  bonus_points: {fileID: 0}
+  bonus_points: {fileID: 3425040766723125847}
   secondsTilDeath: 1
 --- !u!61 &8490226941351730297
 BoxCollider2D:
