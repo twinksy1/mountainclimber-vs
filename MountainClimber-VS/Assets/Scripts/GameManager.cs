@@ -21,18 +21,21 @@ public class GameManager : MonoBehaviour
     private string loser;
 
     // References main camera
-    public Camera cam;
+    public Camera main_cam;
+    public Camera cam1; // Player 1
+    public Camera cam2; // Player 2
 
     // Score offset
     public const float scoreOffset = 5.6f;
 
     // Max distance player can be from cam before being considered out of bounds
-    public const float verticalMaxDist = 9.0f;
+    public const float verticalMaxDist = 18.2f;
     public const float horizontalMaxDist = 15.0f;
 
     // UI Mechanics
     public float secondsTilRestart = 2f;
-    public TextMeshProUGUI score;
+    public TextMeshProUGUI score1;
+    public TextMeshProUGUI score2;
     public GameObject gameover_ui;
     public TextMeshProUGUI gameover_text;
     string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n"};
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        score1.enabled = true;
+        score2.enabled = true;
         gameover_ui.SetActive(false);
         show = Random.Range(0, 4);
     }
@@ -57,15 +62,16 @@ public class GameManager : MonoBehaviour
         if (new_p2Score > p2Score) p2Score = new_p2Score;
 
         // Player 1
-        float xdist = Mathf.Abs(player1.transform.position.x - cam.transform.position.x);
+        float xdist = Mathf.Abs(player1.transform.position.x - cam1.transform.position.x);
 
-        if(player1.transform.position.y <= cam.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
+        if(player1.transform.position.y <= cam1.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 1 is out of bounds
             Debug.Log("Player 1 is out of bounds");
             loser = "Player 1";
             // Stop scrolling
-            cam.GetComponent<scroll>().enabled = false;
+            cam1.GetComponent<scroll>().enabled = false;
+            cam2.GetComponent<scroll>().enabled = false;
             // Stop Player 1 movement
             player1.GetComponent<PlayerMovement>().enabled = false;
             player2.GetComponent<PlayerMovement>().enabled = false;
@@ -74,15 +80,16 @@ public class GameManager : MonoBehaviour
         }
 
         // Player 2 
-        xdist = Mathf.Abs(player2.transform.position.x - cam.transform.position.x);
+        xdist = Mathf.Abs(player2.transform.position.x - cam2.transform.position.x);
         
-        if(player2.transform.position.y <= cam.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
+        if(player2.transform.position.y <= cam2.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 2 is out of bounds
             Debug.Log("Player 2 is out of bounds");
             loser = "Player 2";
             // Stop scrolling
-            cam.GetComponent<scroll>().enabled = false;
+            cam1.GetComponent<scroll>().enabled = false;
+            cam2.GetComponent<scroll>().enabled = false;
             // Stop Player movement
             player1.GetComponent<PlayerMovement>().enabled = false;
             player2.GetComponent<PlayerMovement>().enabled = false;
@@ -114,17 +121,20 @@ public class GameManager : MonoBehaviour
        }
        */
 
-        score.text = "Player 1: " + (p1Score + p1BonusScore) + "\n\n\nPlayer 2: " + (p2Score + p2BonusScore);
+        score1.text = "Player 1: " + (p1Score + p1BonusScore) + "\n\n\nPlayer 2: " + (p2Score + p2BonusScore);
+        score2.text = "Player 1: " + (p1Score + p1BonusScore) + "\n\n\nPlayer 2: " + (p2Score + p2BonusScore);
     }
 
     IEnumerator DelayTilRestart()
     {
+        main_cam.enabled = true;
         gameover_text.text = gameover_displays[show] + "\n" + loser + " fell off!" +
             "\n\nPlayer 1: " + (p1Score+p1BonusScore).ToString() + "\nPlayer 2: " + (p2Score+p2BonusScore).ToString();
 
         // Display some death message
         gameover_ui.SetActive(true);
-        score.enabled = false;
+        score1.enabled = false;
+        score2.enabled = false;
 
         // Wait
         yield return new WaitForSeconds(secondsTilRestart);
