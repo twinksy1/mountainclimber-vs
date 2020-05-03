@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public const float scoreOffset = 5.6f;
 
     // Max distance player can be from cam before being considered out of bounds
-    public const float verticalMaxDist = 9.0f;
+    public const float verticalMaxDist = 18.2f;
     public const float horizontalMaxDist = 15.0f;
 
     // UI Mechanics
