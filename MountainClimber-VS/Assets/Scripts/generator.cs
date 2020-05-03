@@ -60,7 +60,7 @@ public class generator : MonoBehaviour
         {
             generateBlock();
         }
-        if ((Vector3.Distance(player.position, endWall) < 100f) || (Vector3.Distance(player2.position, endWall) < 100f))
+        if ((Vector3.Distance(player.position, endWall) < 100f) || (Vector3.Distance(player2.position, endWall2) < 100f))
         {
             generateWall();
         }
