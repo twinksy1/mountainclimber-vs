@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Maintained by: Juan Villasenor
+// Crate object that interacts with players & the environment,
+// rewards players with a bonus 10 points when they break it
+
 public class Crate_Properties : MonoBehaviour
 {
     // Components
@@ -12,6 +16,7 @@ public class Crate_Properties : MonoBehaviour
     public BoxCollider2D box_collider;
     public Rigidbody2D rb;
     public TextMeshProUGUI bonus_points;
+    private AudioSource audioData;
 
     // Check if player collided with this crate
     bool collided = false;
@@ -24,18 +29,22 @@ public class Crate_Properties : MonoBehaviour
         // Disable continuous animation
         animator.enabled = false;
         bonus_points.enabled = false;
+        collided = false;
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         // Collision detection
         if ((collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo") && //collisionInfo.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.0f &&
-            collisionInfo.gameObject.GetComponent<Transform>().position.y > t.position.y+offset)
+            collisionInfo.gameObject.GetComponent<Transform>().position.y-t.position.y >= offset)
         {
             Debug.Log("COLLISION WITH CRATE");
             // Call function in player movement script
             collisionInfo.gameObject.GetComponent<PlayerMovement>().setBonusPoints();
             collided = true;
+            // Plays audio when colliding
+            audioData = GetComponent<AudioSource>();
+            audioData.Play();
         }
     }
 
