@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     // Max distance player can be from cam before being considered out of bounds
     public const float verticalMaxDist = 18.2f;
-    public const float horizontalMaxDist = 15.0f;
+    public const float horizontalMaxDist = 13.0f;
 
     // UI Mechanics
     public float secondsTilRestart = 2f;
@@ -38,11 +38,19 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI score2;
     public GameObject gameover_ui;
     public TextMeshProUGUI gameover_text;
-    string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n"};
+    string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n" };
     int show;
+
+    // Crate generation
+    [SerializeField] public Transform crate;
+    public int chance = 500;
+    private GameObject[] ground;
+    private float crate_offsety = 0.1f;
+    private float crate_offsetx = 1.0f;
 
     void Start()
     {
+        // Get stuff ready
         score1.enabled = true;
         score2.enabled = true;
         gameover_ui.SetActive(false);
@@ -64,7 +72,7 @@ public class GameManager : MonoBehaviour
         // Player 1
         float xdist = Mathf.Abs(player1.transform.position.x - cam1.transform.position.x);
 
-        if(player1.transform.position.y <= cam1.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
+        if (player1.transform.position.y <= cam1.transform.position.y - verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 1 is out of bounds
             Debug.Log("Player 1 is out of bounds");
@@ -81,8 +89,8 @@ public class GameManager : MonoBehaviour
 
         // Player 2 
         xdist = Mathf.Abs(player2.transform.position.x - cam2.transform.position.x);
-        
-        if(player2.transform.position.y <= cam2.transform.position.y-verticalMaxDist || xdist > horizontalMaxDist)
+
+        if (player2.transform.position.y <= cam2.transform.position.y - verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 2 is out of bounds
             Debug.Log("Player 2 is out of bounds");
@@ -98,31 +106,85 @@ public class GameManager : MonoBehaviour
         }
 
         // Players broke crates, reward with bonus points
-        if(player1.GetComponent<PlayerMovement>().checkBonus())
+        if (player1.GetComponent<PlayerMovement>().checkBonus())
         {
             p1BonusScore += 10;
         }
-        
-        if(player2.GetComponent<PlayerMovement>().checkBonus())
-        {
-        p2BonusScore += 10;
-        }
-         
-        /*
-       if(p1Score > p2Score)
-       {
-           score.text = "Player 1 is beating Player 2 :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
-       } else if(p2Score > p1Score)
-       {
-           score.text = "Player 2 is owning Player 1 :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
-       } else
-       {
-           score.text = "The race is neck to neck :O\nPlayer 1: " + (p1Score+p1BonusScore) + "\nPlayer 2: " + (p2Score+p2BonusScore);
-       }
-       */
 
-        score1.text = "Player 1: " + (p1Score + p1BonusScore) + "\n\n\nPlayer 2: " + (p2Score + p2BonusScore);
-        score2.text = "Player 1: " + (p1Score + p1BonusScore) + "\n\n\nPlayer 2: " + (p2Score + p2BonusScore);
+        if (player2.GetComponent<PlayerMovement>().checkBonus())
+        {
+            p2BonusScore += 10;
+        }
+
+        score1.text = "Score: " + (p1Score + p1BonusScore);
+        score2.text = "Score: " + (p2Score + p2BonusScore);
+        
+        // Generate a crate
+
+        // Crate for player 1
+        int selected = Random.Range(0, chance);
+        if (selected == 1)
+        {
+            float minx = player1.transform.position.x - horizontalMaxDist;
+            float maxx = player1.transform.position.x + horizontalMaxDist;
+            float miny = player1.transform.position.y + verticalMaxDist;
+            float maxy = player1.transform.position.y + (2 * verticalMaxDist);
+            ground = GameObject.FindGameObjectsWithTag("Ground");
+            int i;
+            for(i = 0; i<ground.Length; i++)
+            {
+                // Find good position to place crate
+                float xpos = ground[i].transform.position.x;
+                float ypos = ground[i].transform.position.y;
+                if(xpos > minx && xpos < maxx && ypos > miny && ypos < maxy)
+                {
+                    break;
+                }
+            }
+            float x = ground[i].transform.position.x + crate_offsetx;
+            float y = ground[i].transform.position.y + crate_offsety;
+
+            Vector2 pos = new Vector2(x, y);
+            Transform new_crate = Instantiate(crate, pos, Quaternion.identity);
+        }
+        // Crate for player 2
+        else if(selected == 2)
+        {
+            float minx = player2.transform.position.x - horizontalMaxDist;
+            float maxx = player2.transform.position.x + horizontalMaxDist;
+            float miny = player2.transform.position.y + verticalMaxDist;
+            float maxy = player2.transform.position.y + (3 * verticalMaxDist);
+            ground = GameObject.FindGameObjectsWithTag("Ground");
+            int i;
+            for (i = 0; i < ground.Length; i++)
+            {
+                // Find good position to place crate
+                float xpos = ground[i].transform.position.x;
+                float ypos = ground[i].transform.position.y;
+                if (xpos > minx && xpos < maxx && ypos > miny && ypos < maxy)
+                {
+                    break;
+                }
+            }
+            float x = ground[i].transform.position.x + crate_offsetx;
+            float y = ground[i].transform.position.y + crate_offsety;
+
+            Vector2 pos = new Vector2(x, y);
+            Transform new_crate = Instantiate(crate, pos, Quaternion.identity);
+        }
+
+        // Clean up old crates
+        GameObject[] crates = GameObject.FindGameObjectsWithTag("Crate");
+        for(int i=0; i<crates.Length; i++)
+        {
+            float p1y = player1.transform.position.y;
+            float p2y = player2.transform.position.y;
+            float cratey = crates[i].transform.position.y;
+            if(cratey < p1y-verticalMaxDist && cratey < p2y-verticalMaxDist)
+            {
+                Destroy(crates[i]);
+            }
+        }
     }
 
     IEnumerator DelayTilRestart()
