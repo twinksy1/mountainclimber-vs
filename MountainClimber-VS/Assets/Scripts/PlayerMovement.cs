@@ -6,7 +6,9 @@ using UnityEngine;
 //JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
 //              Did not remove or alter any other code - Juan
 //JV 04-28-2020: Added modifications for two player support - Juan
+//AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
 //JV 05-02-2020: Added player jump & land sounds
+
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
@@ -86,6 +88,12 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsLookDown", false);
             }
 
+            // AM 05-02-20 check to see if the animator should play the attack animation
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                animator.SetTrigger("IsAttack");
+            }
+
             if (vectorbool == true)
             {
                 animator.SetBool("IsFalling", false);
@@ -141,6 +149,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 lookDown = false;
                 animator.SetBool("IsLookDown", false);
+            }
+
+            // AM 05-02-20 check to see if the animator should play the attack animation
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                
+                animator.SetTrigger("IsAttack");
             }
 
             if (vectorbool == true)
