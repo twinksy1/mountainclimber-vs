@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
-//PM 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
+//JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
 //              Did not remove or alter any other code - Juan
-//PM 04-28-2020: Added modifications for two player support - Juan
+//JV 04-28-2020: Added modifications for two player support - Juan
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
