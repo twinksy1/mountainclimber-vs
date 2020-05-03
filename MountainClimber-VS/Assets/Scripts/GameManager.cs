@@ -46,9 +46,11 @@ public class GameManager : MonoBehaviour
     public int chance = 500;
     private GameObject[] ground;
     private float crate_offsety = 0.1f;
+    private float crate_offsetx = 1.0f;
 
     void Start()
     {
+        // Get stuff ready
         score1.enabled = true;
         score2.enabled = true;
         gameover_ui.SetActive(false);
@@ -118,13 +120,15 @@ public class GameManager : MonoBehaviour
         score2.text = "Score: " + (p2Score + p2BonusScore);
         
         // Generate a crate
+
+        // Crate for player 1
         int selected = Random.Range(0, chance);
         if (selected == 1)
         {
             float minx = player1.transform.position.x - horizontalMaxDist;
             float maxx = player1.transform.position.x + horizontalMaxDist;
             float miny = player1.transform.position.y + verticalMaxDist;
-            float maxy = player1.transform.position.y + (3 * verticalMaxDist);
+            float maxy = player1.transform.position.y + (2 * verticalMaxDist);
             ground = GameObject.FindGameObjectsWithTag("Ground");
             int i;
             for(i = 0; i<ground.Length; i++)
@@ -137,12 +141,14 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
-            float x = ground[i].transform.position.x;
+            float x = ground[i].transform.position.x + crate_offsetx;
             float y = ground[i].transform.position.y + crate_offsety;
 
             Vector2 pos = new Vector2(x, y);
             Transform new_crate = Instantiate(crate, pos, Quaternion.identity);
-        } else if(selected == 2)
+        }
+        // Crate for player 2
+        else if(selected == 2)
         {
             float minx = player2.transform.position.x - horizontalMaxDist;
             float maxx = player2.transform.position.x + horizontalMaxDist;
@@ -160,7 +166,7 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
-            float x = ground[i].transform.position.x;
+            float x = ground[i].transform.position.x + crate_offsetx;
             float y = ground[i].transform.position.y + crate_offsety;
 
             Vector2 pos = new Vector2(x, y);

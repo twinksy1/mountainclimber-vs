@@ -6,6 +6,7 @@ using UnityEngine;
 //JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
 //              Did not remove or alter any other code - Juan
 //JV 04-28-2020: Added modifications for two player support - Juan
+//JV 05-02-2020: Added player jump & land sounds
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
@@ -22,11 +23,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool recieveBonus = false;
 
+    // Audio stuff
+    public AudioSource jump_sound;
+    public AudioSource land_sound;
+    public float volume = 0.7f;
+
     public void OnLanding()
     {
         animator.SetBool("IsJump", false);
         animator.SetBool("LandFrame", false);
         animator.SetBool("IsFalling", false);
+        // Play the land sound
+        land_sound.PlayOneShot(land_sound.clip, volume);
     }
 
     // Update is called once per frame
@@ -52,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 jump = true;
                 animator.SetBool("IsJump", true);
+                // Play the jump sound
+                jump_sound.PlayOneShot(jump_sound.clip, volume);
             }
 
             if (Input.GetButtonDown("Up") && locationLock == false)
@@ -107,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 jump = true;
                 animator.SetBool("IsJump", true);
+                // Play the jump sound
+                jump_sound.PlayOneShot(jump_sound.clip, volume);
             }
 
             if (Input.GetButtonDown("Up") && locationLock == false)
