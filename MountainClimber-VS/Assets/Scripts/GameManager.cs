@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿// Maintained by: Juan Villasenor
+// AM: 04-20-20 tried to make a few names more human readable
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-// Maintained by: Juan Villasenor
-// AM: 04-20-20 tried to make a few names more human readable
 public class GameManager : MonoBehaviour
 {
     // References player objects
@@ -36,10 +36,16 @@ public class GameManager : MonoBehaviour
     public float secondsTilRestart = 2f;
     public TextMeshProUGUI score1;
     public TextMeshProUGUI score2;
+    public TextMeshProUGUI countdown;
     public GameObject gameover_ui;
     public TextMeshProUGUI gameover_text;
     string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n" };
     int show;
+
+    // Countdown
+    public float counter = 3f;
+    float count_time;
+    bool rearranged = false;
 
     // Crate generation
     [SerializeField] public Transform crate;
@@ -55,10 +61,52 @@ public class GameManager : MonoBehaviour
         score2.enabled = true;
         gameover_ui.SetActive(false);
         show = Random.Range(0, 4);
+        count_time = counter;
+
+        // Disable scripts and child cams for countdown on shared screen
+        player1.GetComponent<PlayerMovement>().enabled = false;
+        player2.GetComponent<PlayerMovement>().enabled = false;
+        cam1.GetComponent<scroll>().enabled = false;
+        cam2.GetComponent<scroll>().enabled = false;
+        main_cam.GetComponent<Camera>().enabled = true;
+        cam1.GetComponent<Camera>().enabled = false;
+        cam2.GetComponent<Camera>().enabled = false;
     }
 
     void Update()
     {
+        // Countdown
+        if (count_time > 1)
+        {
+            countdown.GetComponent<Animator>().ResetTrigger("Animate");
+            countdown.text = count_time.ToString("0");
+            countdown.GetComponent<Animator>().SetTrigger("Animate");
+            count_time -= 1f * Time.deltaTime;
+            return;
+        }
+        else if (count_time > 0.5)
+        {
+            countdown.text = "GO!";
+            count_time -= 1f * Time.deltaTime;
+            return;
+        }
+        else
+        {
+            if (!rearranged)
+            {
+                // Set all scripts to true and change to splitscreen
+                countdown.enabled = false;
+                player1.GetComponent<PlayerMovement>().enabled = true;
+                player2.GetComponent<PlayerMovement>().enabled = true;
+                cam1.GetComponent<scroll>().enabled = true;
+                cam2.GetComponent<scroll>().enabled = true;
+                main_cam.GetComponent<Camera>().enabled = false;
+                cam1.GetComponent<Camera>().enabled = true;
+                cam2.GetComponent<Camera>().enabled = true;
+                rearranged = true;
+            }
+        }
+        
         // Update scores every frame
         int new_player1_score = (int)(player1.transform.position.y - scoreOffset);
         if (new_player1_score > p1Score)
@@ -75,7 +123,7 @@ public class GameManager : MonoBehaviour
         if (player1.transform.position.y <= cam1.transform.position.y - verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 1 is out of bounds
-            Debug.Log("Player 1 is out of bounds");
+            //Debug.Log("Player 1 is out of bounds");
             loser = "Player 1";
             // Stop scrolling
             cam1.GetComponent<scroll>().enabled = false;
@@ -93,7 +141,7 @@ public class GameManager : MonoBehaviour
         if (player2.transform.position.y <= cam2.transform.position.y - verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 2 is out of bounds
-            Debug.Log("Player 2 is out of bounds");
+            //Debug.Log("Player 2 is out of bounds");
             loser = "Player 2";
             // Stop scrolling
             cam1.GetComponent<scroll>().enabled = false;
@@ -106,12 +154,12 @@ public class GameManager : MonoBehaviour
         }
 
         // Players broke crates, reward with bonus points
-        if (player1.GetComponent<PlayerMovement>().checkBonus())
+        if (player1.GetComponent<PlayerMovement>().CheckBonus())
         {
             p1BonusScore += 10;
         }
 
-        if (player2.GetComponent<PlayerMovement>().checkBonus())
+        if (player2.GetComponent<PlayerMovement>().CheckBonus())
         {
             p2BonusScore += 10;
         }
@@ -125,10 +173,10 @@ public class GameManager : MonoBehaviour
         int selected = Random.Range(0, chance);
         if (selected == 1)
         {
-            float minx = player1.transform.position.x - horizontalMaxDist;
-            float maxx = player1.transform.position.x + horizontalMaxDist;
-            float miny = player1.transform.position.y + verticalMaxDist;
-            float maxy = player1.transform.position.y + (2 * verticalMaxDist);
+            float minx = cam1.transform.position.x - horizontalMaxDist;
+            float maxx = cam1.transform.position.x + horizontalMaxDist;
+            float miny = cam1.transform.position.y + verticalMaxDist;
+            float maxy = cam1.transform.position.y + (2 * verticalMaxDist);
             ground = GameObject.FindGameObjectsWithTag("Ground");
             int i;
             for(i = 0; i<ground.Length; i++)
@@ -150,10 +198,10 @@ public class GameManager : MonoBehaviour
         // Crate for player 2
         else if(selected == 2)
         {
-            float minx = player2.transform.position.x - horizontalMaxDist;
-            float maxx = player2.transform.position.x + horizontalMaxDist;
-            float miny = player2.transform.position.y + verticalMaxDist;
-            float maxy = player2.transform.position.y + (3 * verticalMaxDist);
+            float minx = cam2.transform.position.x - horizontalMaxDist;
+            float maxx = cam2.transform.position.x + horizontalMaxDist;
+            float miny = cam2.transform.position.y + verticalMaxDist;
+            float maxy = cam2.transform.position.y + (2 * verticalMaxDist);
             ground = GameObject.FindGameObjectsWithTag("Ground");
             int i;
             for (i = 0; i < ground.Length; i++)
@@ -177,10 +225,10 @@ public class GameManager : MonoBehaviour
         GameObject[] crates = GameObject.FindGameObjectsWithTag("Crate");
         for(int i=0; i<crates.Length; i++)
         {
-            float p1y = player1.transform.position.y;
-            float p2y = player2.transform.position.y;
+            float c1y = cam1.transform.position.y;
+            float c2y = cam2.transform.position.y;
             float cratey = crates[i].transform.position.y;
-            if(cratey < p1y-verticalMaxDist && cratey < p2y-verticalMaxDist)
+            if(cratey < c1y-verticalMaxDist && cratey < c2y-verticalMaxDist)
             {
                 Destroy(crates[i]);
             }

@@ -1,12 +1,11 @@
-﻿using System.Collections;
+﻿// Maintained by: Juan Villasenor
+// Crate object that interacts with players & the environment,
+// rewards players with a bonus 10 points when they break it
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-// Maintained by: Juan Villasenor
-// Crate object that interacts with players & the environment,
-// rewards players with a bonus 10 points when they break it
 
 public class Crate_Properties : MonoBehaviour
 {
@@ -35,16 +34,31 @@ public class Crate_Properties : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         // Collision detection
-        if ((collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo") && //collisionInfo.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.0f &&
-            collisionInfo.gameObject.GetComponent<Transform>().position.y-t.position.y >= offset)
+        if (collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo") //collisionInfo.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.0f &&
         {
-            Debug.Log("COLLISION WITH CRATE");
-            // Call function in player movement script
-            collisionInfo.gameObject.GetComponent<PlayerMovement>().setBonusPoints();
-            collided = true;
-            // Plays audio when colliding
-            audioData = GetComponent<AudioSource>();
-            audioData.Play();
+            // Player jumps on crate
+            if (collisionInfo.gameObject.GetComponent<Transform>().position.y - t.position.y >= offset)
+            {
+                Debug.Log("COLLISION WITH CRATE");
+                // Call function in player movement script
+                collisionInfo.gameObject.GetComponent<PlayerMovement>().SetBonusPoints();
+                collided = true;
+                // Plays audio when colliding
+                audioData = GetComponent<AudioSource>();
+                audioData.Play();
+            }
+            // Player attacks crate
+            else if(collisionInfo.gameObject.GetComponent<PlayerMovement>().CheckAttack())
+            {
+                Debug.Log("ATTACKED");
+                // Call function in player movement script
+                collisionInfo.gameObject.GetComponent<PlayerMovement>().SetBonusPoints();
+                collided = true;
+                // Plays audio when colliding
+                audioData = GetComponent<AudioSource>();
+                audioData.Play();
+            }
+            Debug.Log(collisionInfo.gameObject.GetComponent<PlayerMovement>().CheckAttack());
         }
     }
 
