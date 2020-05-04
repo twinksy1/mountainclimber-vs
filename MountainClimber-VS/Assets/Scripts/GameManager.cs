@@ -36,10 +36,16 @@ public class GameManager : MonoBehaviour
     public float secondsTilRestart = 2f;
     public TextMeshProUGUI score1;
     public TextMeshProUGUI score2;
+    public TextMeshProUGUI countdown;
     public GameObject gameover_ui;
     public TextMeshProUGUI gameover_text;
     string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n" };
     int show;
+
+    // Countdown
+    public float counter = 3f;
+    float count_time;
+    bool rearranged = false;
 
     // Crate generation
     [SerializeField] public Transform crate;
@@ -55,10 +61,51 @@ public class GameManager : MonoBehaviour
         score2.enabled = true;
         gameover_ui.SetActive(false);
         show = Random.Range(0, 4);
+        count_time = counter;
+
+        // Disable scripts and child cams for countdown on shared screen
+        player1.GetComponent<PlayerMovement>().enabled = false;
+        player2.GetComponent<PlayerMovement>().enabled = false;
+        cam1.GetComponent<scroll>().enabled = false;
+        cam2.GetComponent<scroll>().enabled = false;
+        main_cam.GetComponent<Camera>().enabled = true;
+        cam1.GetComponent<Camera>().enabled = false;
+        cam2.GetComponent<Camera>().enabled = false;
     }
 
     void Update()
     {
+        if (count_time > 1)
+        {
+            countdown.GetComponent<Animator>().ResetTrigger("Animate");
+            countdown.text = count_time.ToString("0");
+            countdown.GetComponent<Animator>().SetTrigger("Animate");
+            count_time -= 1f * Time.deltaTime;
+            return;
+        }
+        else if (count_time > 0.5)
+        {
+            countdown.text = "GO!";
+            count_time -= 1f * Time.deltaTime;
+            return;
+        }
+        else
+        {
+            if (!rearranged)
+            {
+                // Set all scripts to true and change to splitscreen
+                countdown.enabled = false;
+                player1.GetComponent<PlayerMovement>().enabled = true;
+                player2.GetComponent<PlayerMovement>().enabled = true;
+                cam1.GetComponent<scroll>().enabled = true;
+                cam2.GetComponent<scroll>().enabled = true;
+                main_cam.GetComponent<Camera>().enabled = false;
+                cam1.GetComponent<Camera>().enabled = true;
+                cam2.GetComponent<Camera>().enabled = true;
+                rearranged = true;
+            }
+        }
+        
         // Update scores every frame
         int new_player1_score = (int)(player1.transform.position.y - scoreOffset);
         if (new_player1_score > p1Score)

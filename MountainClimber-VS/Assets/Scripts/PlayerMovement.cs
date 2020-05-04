@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsJump", false);
         animator.SetBool("LandFrame", false);
         animator.SetBool("IsFalling", false);
+        animator.SetBool("IsAttack", false);
         // Play the land sound
         land_sound.PlayOneShot(land_sound.clip, volume);
     }
@@ -89,9 +90,12 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // AM 05-02-20 check to see if the animator should play the attack animation
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Attack"))
             {
-                animator.SetTrigger("IsAttack");
+                animator.SetBool("IsAttack", true);
+            } else
+            {
+                animator.SetBool("IsAttack", false);
             }
 
             if (vectorbool == true)
@@ -152,10 +156,12 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // AM 05-02-20 check to see if the animator should play the attack animation
-            if (Input.GetKeyDown(KeyCode.RightShift))
+            if (Input.GetButtonDown("Attack1"))
             {
-                
-                animator.SetTrigger("IsAttack");
+                animator.SetBool("IsAttack", true);
+            } else
+            {
+                animator.SetBool("IsAttack", false);
             }
 
             if (vectorbool == true)
