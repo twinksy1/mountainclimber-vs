@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
-using UnityEngine;
-
-//JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
+﻿//JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
 //              Did not remove or alter any other code - Juan
 //JV 04-28-2020: Added modifications for two player support - Juan
 //AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
 //JV 05-02-2020: Added player jump & land sounds
+// JV 05-04-2020: Modified code for better attack animation functionality
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Timers;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     bool lookDown = false;
     bool lookUp = false;
     bool locationLock = false;
+    private bool isAttacking = false;
 
     private bool recieveBonus = false;
 
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsJump", false);
         animator.SetBool("LandFrame", false);
         animator.SetBool("IsFalling", false);
+        animator.SetBool("IsAttack", false);
         // Play the land sound
         land_sound.PlayOneShot(land_sound.clip, volume);
     }
@@ -89,9 +92,17 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // AM 05-02-20 check to see if the animator should play the attack animation
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            // JV 05-04-20: Modified attack animation
+            if (Input.GetButtonDown("Attack"))
             {
-                animator.SetTrigger("IsAttack");
+                animator.SetBool("IsAttack", true);
+                Debug.Log("ATTACKING");
+                isAttacking = true;
+            }
+            else if(Input.GetButtonUp("Attack"))
+            {
+                animator.SetBool("IsAttack", false);
+                isAttacking = false;
             }
 
             if (vectorbool == true)
@@ -152,10 +163,17 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // AM 05-02-20 check to see if the animator should play the attack animation
-            if (Input.GetKeyDown(KeyCode.RightShift))
+            // JV 05-04-20: Modified attack animation
+            if (Input.GetButtonDown("Attack1"))
             {
-                
-                animator.SetTrigger("IsAttack");
+                animator.SetBool("IsAttack", true);
+                Debug.Log("ATTACKING");
+                isAttacking = true;
+            }
+            else if(Input.GetButtonUp("Attack1"))
+            {
+                animator.SetBool("IsAttack", false);
+                isAttacking = false;
             }
 
             if (vectorbool == true)
@@ -180,18 +198,26 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Bonus Score Points
-    public void setBonusPoints()
+    public void SetBonusPoints()
     {
         recieveBonus = true;
     }
 
-    public bool checkBonus()
+    public bool CheckBonus()
     {
         if (recieveBonus == true)
         {
             recieveBonus = false;
             return true;
         }
+        else
+            return false;
+    }
+    // JV 05-04-2020: Added for crate break functionality
+    public bool CheckAttack()
+    {
+        if (isAttacking)
+            return true;
         else
             return false;
     }
