@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameover_text;
     string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n" };
     int show;
+    private bool gameover;
 
     // Countdown
     public float counter = 3f;
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         score2.enabled = true;
         gameover_ui.SetActive(false);
         show = Random.Range(0, 4);
+        gameover = false;
         count_time = counter;
 
         // Disable scripts and child cams for countdown on shared screen
@@ -154,18 +156,50 @@ public class GameManager : MonoBehaviour
         }
 
         // Players broke crates, reward with bonus points
-        if (player1.GetComponent<PlayerMovement>().CheckBonus())
+        if (player1.GetComponent<Powerup>().CheckBonus())
         {
             p1BonusScore += 10;
         }
 
-        if (player2.GetComponent<PlayerMovement>().CheckBonus())
+        if (player2.GetComponent<Powerup>().CheckBonus())
         {
             p2BonusScore += 10;
         }
 
         score1.text = "Score: " + (p1Score + p1BonusScore);
         score2.text = "Score: " + (p2Score + p2BonusScore);
+
+        // Check if either player picked up a powerup
+        if(player1.GetComponent<Powerup>().CheckEnemySpeedup())
+        {
+            // Speed up player 2's cam
+            Debug.Log("Speeding up player 2 cam");
+            cam2.GetComponent<scroll>().speed += 0.01f;
+        } else if(player1.GetComponent<Powerup>().CheckCamSlowdown())
+        {
+            // Slow down player 1's cam
+            Debug.Log("Slowing down player 1 cam");
+            cam1.GetComponent<scroll>().speed -= 0.01f;
+        } else if(player1.GetComponent<Powerup>().CheckSuperJump())
+        {
+            // Make Player 1 jump higher
+
+        }
+
+        if(player2.GetComponent<Powerup>().CheckEnemySpeedup())
+        {
+            // Speed up player 1's cam
+            Debug.Log("Speeding up player 1 cam");
+            cam1.GetComponent<scroll>().speed += 0.01f;
+        } else if(player2.GetComponent<Powerup>().CheckCamSlowdown())
+        {
+            // Slow down player 2's cam
+            Debug.Log("Slowing down player 2 cam");
+            cam2.GetComponent<scroll>().speed -= 0.01f;
+        } else if(player2.GetComponent<Powerup>().CheckSuperJump())
+        {
+            // Make player 2 jump higher
+        }
         
         // Generate a crate
 
@@ -238,13 +272,17 @@ public class GameManager : MonoBehaviour
     IEnumerator DelayTilRestart()
     {
         main_cam.enabled = true;
-        gameover_text.text = gameover_displays[show] + "\n" + loser + " fell off!" +
-            "\n\nPlayer 1: " + (p1Score+p1BonusScore).ToString() + "\nPlayer 2: " + (p2Score+p2BonusScore).ToString();
+        if(!gameover)
+        {
+            gameover_text.text = gameover_displays[show] + "\n" + loser + " fell off!" +
+            "\n\nPlayer 1: " + (p1Score + p1BonusScore).ToString() + "\nPlayer 2: " + (p2Score + p2BonusScore).ToString();
 
-        // Display some death message
-        gameover_ui.SetActive(true);
-        score1.enabled = false;
-        score2.enabled = false;
+            // Display some death message
+            gameover_ui.SetActive(true);
+            score1.enabled = false;
+            score2.enabled = false;
+            gameover = true;
+        }
 
         // Wait
         yield return new WaitForSeconds(secondsTilRestart);

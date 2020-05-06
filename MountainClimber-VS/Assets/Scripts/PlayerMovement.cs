@@ -24,8 +24,15 @@ public class PlayerMovement : MonoBehaviour
     bool lookUp = false;
     bool locationLock = false;
     private bool isAttacking = false;
+    // JV 05-05-2020: Attack timer
+    // How long player can have its pick out
+    public float pickout_timer = 2.0f;
+    private float curr_time = 0.0f;
+    // JV 05-05-2020: Latching to walls
+    public int latch_times = 2;
+    private int latch_count;
+    public bool isLatched = false;
 
-    private bool recieveBonus = false;
 
     // Audio stuff
     public AudioSource jump_sound;
@@ -42,8 +49,15 @@ public class PlayerMovement : MonoBehaviour
         land_sound.PlayOneShot(land_sound.clip, volume);
     }
 
+    void Start()
+    {
+        curr_time = pickout_timer;
+        latch_count = latch_times;
+    }
+
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
         // Player One
         if (this.tag == "PlayerOne")
         {
@@ -61,12 +75,15 @@ public class PlayerMovement : MonoBehaviour
                 locationLock = false;
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && latch_count > 0)
             {
                 jump = true;
-                animator.SetBool("IsJump", true);
                 // Play the jump sound
-                jump_sound.PlayOneShot(jump_sound.clip, volume);
+                if(animator.GetBool("IsJump") == false)
+                {
+                    jump_sound.PlayOneShot(jump_sound.clip, volume);
+                }
+                animator.SetBool("IsJump", true);
             }
 
             if (Input.GetButtonDown("Up") && locationLock == false)
@@ -95,14 +112,22 @@ public class PlayerMovement : MonoBehaviour
             // JV 05-04-20: Modified attack animation
             if (Input.GetButtonDown("Attack"))
             {
-                animator.SetBool("IsAttack", true);
-                Debug.Log("ATTACKING");
-                isAttacking = true;
+                if(curr_time > 0.0f)
+                {
+                    animator.SetBool("IsAttack", true);
+                    Debug.Log("ATTACKING");
+                    isAttacking = true;
+                } else
+                {
+                    animator.SetBool("IsAttack", false);
+                    isAttacking = false;
+                }
             }
             else if(Input.GetButtonUp("Attack"))
             {
                 animator.SetBool("IsAttack", false);
                 isAttacking = false;
+                curr_time = pickout_timer;
             }
 
             if (vectorbool == true)
@@ -132,12 +157,15 @@ public class PlayerMovement : MonoBehaviour
                 locationLock = false;
             }
 
-            if (Input.GetButtonDown("Jump1"))
+            if (Input.GetButtonDown("Jump1") && latch_count > 0)
             {
                 jump = true;
-                animator.SetBool("IsJump", true);
                 // Play the jump sound
-                jump_sound.PlayOneShot(jump_sound.clip, volume);
+                if (animator.GetBool("IsJump") == false)
+                {
+                    jump_sound.PlayOneShot(jump_sound.clip, volume);
+                }
+                animator.SetBool("IsJump", true);;
             }
 
             if (Input.GetButtonDown("Up") && locationLock == false)
@@ -166,14 +194,22 @@ public class PlayerMovement : MonoBehaviour
             // JV 05-04-20: Modified attack animation
             if (Input.GetButtonDown("Attack1"))
             {
-                animator.SetBool("IsAttack", true);
-                Debug.Log("ATTACKING");
-                isAttacking = true;
+                if(curr_time > 0.0f)
+                {
+                    animator.SetBool("IsAttack", true);
+                    Debug.Log("ATTACKING");
+                    isAttacking = true;
+                } else
+                {
+                    animator.SetBool("IsAttacking", true);
+                    isAttacking = false;
+                }
             }
             else if(Input.GetButtonUp("Attack1"))
             {
                 animator.SetBool("IsAttack", false);
                 isAttacking = false;
+                curr_time = pickout_timer;
             }
 
             if (vectorbool == true)
@@ -186,33 +222,40 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsFalling", true);
             }
         }
+
+        
     }
 
+    void OnCollisionEnter2D(Collision2D collisionInfo)
+    {
+        if(collisionInfo.gameObject.tag == "Wall" && isAttacking && latch_count > 0)
+        {
+            // Collided with wall & this player is attacking & have not surpassed permitted latch times
+            isLatched = true;
+            latch_count -= 1;
+            Debug.Log("Colliding with wall");
+        }
+        if (collisionInfo.gameObject.tag == "Ground")
+        {
+            // Standing or falling towards ground
+            isLatched = false;
+            latch_count = latch_times;
+            Debug.Log("Colliding with ground");
+        }
+    }
 
     void FixedUpdate()
     {
         //Character Movement
         controller.Move(horizontalMove*Time.fixedDeltaTime, jump);
         jump = false;
-    }
 
-
-    // Bonus Score Points
-    public void SetBonusPoints()
-    {
-        recieveBonus = true;
-    }
-
-    public bool CheckBonus()
-    {
-        if (recieveBonus == true)
+        if(curr_time > 0.0f)
         {
-            recieveBonus = false;
-            return true;
+            curr_time -= 1f * Time.fixedDeltaTime;
         }
-        else
-            return false;
     }
+    
     // JV 05-04-2020: Added for crate break functionality
     public bool CheckAttack()
     {
