@@ -178,8 +178,11 @@ public class GameManager : MonoBehaviour
         } else if(player1.GetComponent<Powerup>().CheckCamSlowdown())
         {
             // Slow down player 1's cam
-            Debug.Log("Slowing down player 1 cam");
-            cam1.GetComponent<scroll>().speed -= 0.01f;
+            if(!(cam1.GetComponent<scroll>().speed - 0.01f <= 0.0f))
+            {
+                Debug.Log("Slowing down player 1 cam");
+                cam1.GetComponent<scroll>().speed -= 0.01f;
+            }
         } else if(player1.GetComponent<Powerup>().CheckSuperJump())
         {
             // Make Player 1 jump higher
@@ -194,8 +197,11 @@ public class GameManager : MonoBehaviour
         } else if(player2.GetComponent<Powerup>().CheckCamSlowdown())
         {
             // Slow down player 2's cam
-            Debug.Log("Slowing down player 2 cam");
-            cam2.GetComponent<scroll>().speed -= 0.01f;
+            if (!(cam2.GetComponent<scroll>().speed - 0.01f <= 0.0f))
+            {
+                Debug.Log("Slowing down player 2 cam");
+                cam2.GetComponent<scroll>().speed -= 0.01f;
+            }
         } else if(player2.GetComponent<Powerup>().CheckSuperJump())
         {
             // Make player 2 jump higher

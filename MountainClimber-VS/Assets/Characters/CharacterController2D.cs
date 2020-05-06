@@ -94,6 +94,13 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+    // JV 05-06-2020: Added to allow jumping while latched to wall
+    public void Jump()
+    {
+        m_Grounded = false;
+        m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+    }
+
 	public bool getVectorBoolY()
 	{
 		if (m_Rigidbody2D.velocity.y < 0)

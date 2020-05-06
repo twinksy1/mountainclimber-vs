@@ -1387,7 +1387,8 @@ MonoBehaviour:
   controller: {fileID: 623827584}
   animator: {fileID: 623827579}
   runSpeed: 70
-  pickout_timer: 2
+  rb: {fileID: 623827583}
+  pickout_timer: 1
   latch_times: 2
   isLatched: 0
   jump_sound: {fileID: 623827588}
@@ -2117,7 +2118,8 @@ MonoBehaviour:
   controller: {fileID: 1142015233}
   animator: {fileID: 1142015228}
   runSpeed: 70
-  pickout_timer: 2
+  rb: {fileID: 1142015232}
+  pickout_timer: 1
   latch_times: 2
   isLatched: 0
   jump_sound: {fileID: 1142015237}
