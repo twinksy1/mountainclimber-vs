@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t: {fileID: 297174677}
-  speed: 0.02
+  speed: 0.01
 --- !u!81 &297174675
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1338,6 +1338,7 @@ GameObject:
   - component: {fileID: 623827586}
   - component: {fileID: 623827585}
   - component: {fileID: 623827584}
+  - component: {fileID: 623827589}
   - component: {fileID: 623827583}
   - component: {fileID: 623827582}
   - component: {fileID: 623827581}
@@ -1386,6 +1387,10 @@ MonoBehaviour:
   controller: {fileID: 623827584}
   animator: {fileID: 623827579}
   runSpeed: 70
+  rb: {fileID: 623827583}
+  pickout_timer: 1
+  latch_times: 2
+  isLatched: 0
   jump_sound: {fileID: 623827588}
   land_sound: {fileID: 623827587}
   volume: 0.7
@@ -1744,6 +1749,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &623827589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623827578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502de9a6dc6f41041ad2e8a7aec3ad41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump_multiplier: 1.5
 --- !u!1001 &681476067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2051,6 +2069,7 @@ GameObject:
   - component: {fileID: 1142015235}
   - component: {fileID: 1142015234}
   - component: {fileID: 1142015233}
+  - component: {fileID: 1142015238}
   - component: {fileID: 1142015232}
   - component: {fileID: 1142015231}
   - component: {fileID: 1142015230}
@@ -2099,6 +2118,10 @@ MonoBehaviour:
   controller: {fileID: 1142015233}
   animator: {fileID: 1142015228}
   runSpeed: 70
+  rb: {fileID: 1142015232}
+  pickout_timer: 1
+  latch_times: 2
+  isLatched: 0
   jump_sound: {fileID: 1142015237}
   land_sound: {fileID: 1142015236}
   volume: 0.7
@@ -2457,6 +2480,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1142015238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142015227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502de9a6dc6f41041ad2e8a7aec3ad41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump_multiplier: 1.5
 --- !u!1001 &1177340531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3106,7 +3142,8 @@ MonoBehaviour:
   gameover_text: {fileID: 72966314}
   counter: 3
   crate: {fileID: 8490226941351730247, guid: d4545bb9715426a45a7dd499ec69dbc8, type: 3}
-  chance: 500
+  chance: 1000
+  min_scroll_speed: 0.01
 --- !u!4 &2022219771
 Transform:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class Crate_Properties : MonoBehaviour
     public Rigidbody2D rb;
     public TextMeshProUGUI bonus_points;
     private AudioSource audioData;
+    private int powerup_idx;
 
     // Check if player collided with this crate
     bool collided = false;
@@ -29,6 +30,7 @@ public class Crate_Properties : MonoBehaviour
         animator.enabled = false;
         bonus_points.enabled = false;
         collided = false;
+        powerup_idx = Random.Range(0, 3);
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
@@ -39,26 +41,53 @@ public class Crate_Properties : MonoBehaviour
             // Player jumps on crate
             if (collisionInfo.gameObject.GetComponent<Transform>().position.y - t.position.y >= offset)
             {
-                Debug.Log("COLLISION WITH CRATE");
                 // Call function in player movement script
-                collisionInfo.gameObject.GetComponent<PlayerMovement>().SetBonusPoints();
+                collisionInfo.gameObject.GetComponent<Powerup>().SetBonusPoints();
                 collided = true;
                 // Plays audio when colliding
                 audioData = GetComponent<AudioSource>();
                 audioData.Play();
+                switch(powerup_idx)
+                {
+                    case 0:
+                        // Enemy Cam Speedup
+                        collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        break;
+                    case 1:
+                        // Cam Slowdown
+                        collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        break;
+                    case 2:
+                        // Super Jump
+                        collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        break;
+                }
             }
             // Player attacks crate
             else if(collisionInfo.gameObject.GetComponent<PlayerMovement>().CheckAttack())
             {
-                Debug.Log("ATTACKED");
                 // Call function in player movement script
-                collisionInfo.gameObject.GetComponent<PlayerMovement>().SetBonusPoints();
+                collisionInfo.gameObject.GetComponent<Powerup>().SetBonusPoints();
                 collided = true;
                 // Plays audio when colliding
                 audioData = GetComponent<AudioSource>();
                 audioData.Play();
+                switch (powerup_idx)
+                {
+                    case 0:
+                        // Enemy Cam Speedup
+                        collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        break;
+                    case 1:
+                        // Cam Slowdown
+                        collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        break;
+                    case 2:
+                        // Super Jump
+                        collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        break;
+                }
             }
-            Debug.Log(collisionInfo.gameObject.GetComponent<PlayerMovement>().CheckAttack());
         }
     }
 

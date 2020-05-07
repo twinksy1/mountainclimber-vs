@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6677598610898057854}
   m_Layer: 0
   m_Name: GrassPlatformVertical (6)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 3770305443055179006}
   m_Layer: 0
   m_Name: GrassPlatformVertical (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 7248465483380392174}
   m_Layer: 0
   m_Name: GrassPlatformVertical (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 4198229328273021502}
   m_Layer: 0
   m_Name: GrassPlatformVertical (8)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 4880264566201735432}
   m_Layer: 0
   m_Name: GrassPlatformVertical (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 6258254614990411552}
   m_Layer: 0
   m_Name: GrassPlatformVertical (10)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
