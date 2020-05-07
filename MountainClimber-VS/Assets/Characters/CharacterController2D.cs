@@ -1,3 +1,4 @@
+// JV 05-06-2020: Added function to jump when latched
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t: {fileID: 297174677}
-  speed: 0
+  speed: 0.01
 --- !u!81 &297174675
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3095,7 +3095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t: {fileID: 2005723017}
-  speed: 0
+  speed: 0.01
 --- !u!1 &2022219769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3142,7 +3142,8 @@ MonoBehaviour:
   gameover_text: {fileID: 72966314}
   counter: 3
   crate: {fileID: 8490226941351730247, guid: d4545bb9715426a45a7dd499ec69dbc8, type: 3}
-  chance: 500
+  chance: 1000
+  min_scroll_speed: 0.01
 --- !u!4 &2022219771
 Transform:
   m_ObjectHideFlags: 0

@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     private float crate_offsety = 0.1f;
     private float crate_offsetx = 1.0f;
 
+    // Power up
+    public float min_scroll_speed = 0.01f;
+
     void Start()
     {
         // Get stuff ready
@@ -178,7 +181,7 @@ public class GameManager : MonoBehaviour
         } else if(player1.GetComponent<Powerup>().CheckCamSlowdown())
         {
             // Slow down player 1's cam
-            if(!(cam1.GetComponent<scroll>().speed - 0.01f <= 0.0f))
+            if(!(cam1.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
             {
                 Debug.Log("Slowing down player 1 cam");
                 cam1.GetComponent<scroll>().speed -= 0.01f;
@@ -197,7 +200,7 @@ public class GameManager : MonoBehaviour
         } else if(player2.GetComponent<Powerup>().CheckCamSlowdown())
         {
             // Slow down player 2's cam
-            if (!(cam2.GetComponent<scroll>().speed - 0.01f <= 0.0f))
+            if (!(cam2.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
             {
                 Debug.Log("Slowing down player 2 cam");
                 cam2.GetComponent<scroll>().speed -= 0.01f;
