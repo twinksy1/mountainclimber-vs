@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// JV 04-28-2020: Modified code so its applicable to all camera objects
+
 public class scroll : MonoBehaviour
 {
     public Transform t;

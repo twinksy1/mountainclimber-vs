@@ -1,49 +1,61 @@
 fileFormatVersion: 2
-guid: a7b28ea82cfb0654db7c51c6b6d434cb
+guid: 7387bdca0b8bb42169f2ec6402f0bce5
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 21300000
-    second: Joebob_Spritesheet_Chopped@3x_0
+    second: Joebob_Spritesheet@3x_0
   - first:
       213: 21300002
-    second: Joebob_Spritesheet_Chopped@3x_1
+    second: Joebob_Spritesheet@3x_1
   - first:
       213: 21300004
-    second: Joebob_Spritesheet_Chopped@3x_2
+    second: Joebob_Spritesheet@3x_2
   - first:
       213: 21300006
-    second: Joebob_Spritesheet_Chopped@3x_3
+    second: Joebob_Spritesheet@3x_3
   - first:
       213: 21300008
-    second: Joebob_Spritesheet_Chopped@3x_4
+    second: Joebob_Spritesheet@3x_4
   - first:
       213: 21300010
-    second: Joebob_Spritesheet_Chopped@3x_5
+    second: Joebob_Spritesheet@3x_5
   - first:
       213: 21300012
-    second: Joebob_Spritesheet_Chopped@3x_6
+    second: Joebob_Spritesheet@3x_6
   - first:
       213: 21300014
-    second: Joebob_Spritesheet_Chopped@3x_7
+    second: Joebob_Spritesheet@3x_7
   - first:
       213: 21300016
-    second: Joebob_Spritesheet_Chopped@3x_8
+    second: Joebob_Spritesheet@3x_8
   - first:
       213: 21300018
-    second: Joebob_Spritesheet_Chopped@3x_9
+    second: Joebob_Spritesheet@3x_9
   - first:
       213: 21300020
-    second: Joebob_Spritesheet_Chopped@3x_10
+    second: Joebob_Spritesheet@3x_10
   - first:
       213: 21300022
-    second: Joebob_Spritesheet_Chopped@3x_11
+    second: Joebob_Spritesheet@3x_11
   - first:
       213: 21300024
-    second: Joebob_Spritesheet_Chopped@3x_12
+    second: Joebob_Spritesheet@3x_12
   - first:
       213: 21300026
-    second: Joebob_Spritesheet_Chopped@3x_13
+    second: Joebob_Spritesheet@3x_13
+  - first:
+      213: 21300028
+    second: Joebob_Spritesheet@3x_14
+  - first:
+      213: 21300030
+    second: Joebob_Spritesheet@3x_15
+  - first:
+      213: 21300032
+    second: Joebob_Spritesheet@3x_16
+  - first:
+      213: 21300034
+    second: Joebob_Spritesheet@3x_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,7 +118,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,19 +130,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -141,295 +141,379 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_0
+      name: Joebob_Spritesheet@3x_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 330
-        width: 240
-        height: 330
+        x: 73
+        y: 2669
+        width: 198
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fa7143ff9e63b14a9dc702bab0fb02c
+      spriteID: 67e6122d68d6140a39c263d074bc6d48
       internalID: 21300000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_1
+      name: Joebob_Spritesheet@3x_1
       rect:
         serializedVersion: 2
-        x: 240
-        y: 330
-        width: 240
-        height: 330
+        x: 434
+        y: 2669
+        width: 197
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d0f8df10d70dbb47bdf13445cc60184
+      spriteID: 9959ef69583c941358de69f836c56b06
       internalID: 21300002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_2
+      name: Joebob_Spritesheet@3x_2
       rect:
         serializedVersion: 2
-        x: 480
-        y: 330
-        width: 240
-        height: 330
+        x: 794
+        y: 2669
+        width: 198
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 763209344a161264dae54e00488f8ecc
+      spriteID: 3818150b8b1924070ac8e6a2b00bc336
       internalID: 21300004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_3
+      name: Joebob_Spritesheet@3x_3
       rect:
         serializedVersion: 2
-        x: 720
-        y: 330
-        width: 240
-        height: 330
+        x: 1154
+        y: 2669
+        width: 197
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a9a3216912328c4ca8f124742758f73
+      spriteID: dd95ad93b92c6462492b957c2158a378
       internalID: 21300006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_4
+      name: Joebob_Spritesheet@3x_4
       rect:
         serializedVersion: 2
-        x: 960
-        y: 330
-        width: 240
-        height: 330
+        x: 1513
+        y: 2654
+        width: 198
+        height: 333
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f175c291395967e46b8ee2bdb74a7e44
+      spriteID: 179d3f01fc85f497f867503c66116520
       internalID: 21300008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_5
+      name: Joebob_Spritesheet@3x_5
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 330
-        width: 240
-        height: 330
+        x: 1859
+        y: 2654
+        width: 212
+        height: 317
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b9f34ce6628da14d87a61858b531579
+      spriteID: feb62c895d1424bc9b7c169fadf2b2da
       internalID: 21300010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_6
+      name: Joebob_Spritesheet@3x_6
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 330
-        width: 240
-        height: 330
+        x: 2219
+        y: 2654
+        width: 213
+        height: 333
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21c6deb4534481f46ba3d119968645e6
+      spriteID: a501a50bbb2f048b9aa6518cc038260f
       internalID: 21300012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_7
+      name: Joebob_Spritesheet@3x_7
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 330
-        width: 240
-        height: 330
+        x: 2580
+        y: 2669
+        width: 227
+        height: 302
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad3312cf2d20714e89fae7dc49038d9
+      spriteID: 8e13f260adcea460ba086c92a28a5401
       internalID: 21300014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_8
+      name: Joebob_Spritesheet@3x_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 240
-        height: 330
+        x: 1020
+        y: 2443
+        width: 61
+        height: 93
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab7fc9ec8c49b5442a6c07dab5138c41
+      spriteID: 9685e575557c84c17a828bb6a74b2a14
       internalID: 21300016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_9
+      name: Joebob_Spritesheet@3x_9
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 240
-        height: 330
+        x: 73
+        y: 1934
+        width: 198
+        height: 332
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55747d0a074bdb041b09d0d9c061c7b2
+      spriteID: bf22781f7cae046eeab7d2bcdbfd7e8d
       internalID: 21300018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_10
+      name: Joebob_Spritesheet@3x_10
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 240
-        height: 330
+        x: 434
+        y: 1934
+        width: 257
+        height: 332
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33208940cfcc34048ab1b5823814d4ac
+      spriteID: f88486daf3f054dbea93c1571d070297
       internalID: 21300020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_11
+      name: Joebob_Spritesheet@3x_11
       rect:
         serializedVersion: 2
-        x: 720
-        y: 0
-        width: 240
-        height: 330
+        x: 794
+        y: 1934
+        width: 258
+        height: 332
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38cda72b63e25ed47a9d84336067625d
+      spriteID: f3dd731496a5b442eaa2d763c340fa79
       internalID: 21300022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_12
+      name: Joebob_Spritesheet@3x_12
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 240
-        height: 330
+        x: 89
+        y: 1229
+        width: 182
+        height: 316
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61dba964e0eb91a4eb7c03b46c0f6050
+      spriteID: 6a0e64bef3bcb46778cc04dbd90cac72
       internalID: 21300024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joebob_Spritesheet_Chopped@3x_13
+      name: Joebob_Spritesheet@3x_13
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 240
-        height: 330
+        x: 448
+        y: 1229
+        width: 183
+        height: 302
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1612667f2b18e704e823aef93cbe59eb
+      spriteID: e5969e29bb1454f7291814bb6e12fb04
       internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joebob_Spritesheet@3x_14
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 1229
+        width: 183
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4936510b68c7d422387e3bf6fa0a9b44
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joebob_Spritesheet@3x_15
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1229
+        width: 197
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955599ce67e264944bc0061dff6f4d5a
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joebob_Spritesheet@3x_16
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 1229
+        width: 243
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13531891b1e3447248db7f6d2e41581e
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joebob_Spritesheet@3x_17
+      rect:
+        serializedVersion: 2
+        x: 1874
+        y: 1229
+        width: 197
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f260499dd7c345d58076243e9e22c66
+      internalID: 21300034
       vertices: []
       indices: 
       edges: []
@@ -437,7 +521,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: cf58f578b778a4c42acd89713c9f5ff4
+    spriteID: 40b833f84c75b422e8b9bd5ecee6b57d
     internalID: 0
     vertices: []
     indices: 
