@@ -9,6 +9,7 @@ TagManager:
   - PlayerTwo
   - Ground
   - Wall
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX
