@@ -5,11 +5,18 @@
 public class scroll : MonoBehaviour
 {
     public Transform t;
-    public float speed = .1f;
+    public float speed = .1f, inc = .01f;
+    public int currentTime, interval = 13;
 
     // Update is called once per frame
     void Update()
     {
+        currentTime = (int)Time.time;
+        if (currentTime > interval)
+        {
+            speed += inc;
+            interval += 10;
+        }
         var cameraPosition = t.position;
         cameraPosition.y += speed;
         t.position = cameraPosition;

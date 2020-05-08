@@ -678,6 +678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   t: {fileID: 297174677}
   speed: 0.01
+  currentTime: 0
+  interval: 13
 --- !u!81 &297174675
 AudioListener:
   m_ObjectHideFlags: 0
@@ -737,7 +739,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297174673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.5, y: -0.28, z: 4.040077}
+  m_LocalPosition: {x: -13.45, y: 0.13, z: 4.040077}
   m_LocalScale: {x: 0.90872, y: 0.90872, z: 0.90872}
   m_Children:
   - {fileID: 1289145547}
@@ -3051,7 +3053,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 16.644644
+  orthographic size: 16.458483
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3075,7 +3077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005723014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.32, y: -0.32, z: 4.040077}
+  m_LocalPosition: {x: 13.08, y: 0.06, z: 4.040077}
   m_LocalScale: {x: 0.90872, y: 0.90872, z: 0.90872}
   m_Children:
   - {fileID: 521039698}
@@ -3096,6 +3098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   t: {fileID: 2005723017}
   speed: 0.01
+  currentTime: 0
+  interval: 13
 --- !u!1 &2022219769
 GameObject:
   m_ObjectHideFlags: 0
