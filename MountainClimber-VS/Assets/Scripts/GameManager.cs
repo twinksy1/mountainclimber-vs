@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Camera main_cam;
     public Camera cam1; // Player 1
     public Camera cam2; // Player 2
+    public float starting_speed = 0.01f;
 
     // Score offset
     public const float scoreOffset = 5.6f;
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n" };
     int show;
     private bool gameover;
+    public TextMeshProUGUI speedup1;
+    public TextMeshProUGUI speedup2;
 
     // Countdown
     public float counter = 3f;
@@ -67,6 +70,8 @@ public class GameManager : MonoBehaviour
         show = Random.Range(0, 4);
         gameover = false;
         count_time = counter;
+        speedup1.GetComponent<Animator>().enabled = false;
+        speedup2.GetComponent<Animator>().enabled = false;
 
         // Disable scripts and child cams for countdown on shared screen
         player1.GetComponent<PlayerMovement>().enabled = false;
@@ -177,6 +182,8 @@ public class GameManager : MonoBehaviour
         {
             // Speed up player 2's cam
             Debug.Log("Speeding up player 2 cam");
+            speedup2.GetComponent<Animator>().enabled = true;
+            speedup2.GetComponent<Animator>().Play("Speedup2");
             cam2.GetComponent<scroll>().speed += 0.01f;
         } else if(player1.GetComponent<Powerup>().CheckCamSlowdown())
         {
@@ -184,6 +191,7 @@ public class GameManager : MonoBehaviour
             if(!(cam1.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
             {
                 Debug.Log("Slowing down player 1 cam");
+                speedup1.GetComponent<Animator>().Play("Speedup");
                 cam1.GetComponent<scroll>().speed -= 0.01f;
             }
         } else if(player1.GetComponent<Powerup>().CheckSuperJump())
@@ -196,6 +204,8 @@ public class GameManager : MonoBehaviour
         {
             // Speed up player 1's cam
             Debug.Log("Speeding up player 1 cam");
+            speedup1.GetComponent<Animator>().enabled = true;
+            speedup1.GetComponent<Animator>().Play("Speedup");
             cam1.GetComponent<scroll>().speed += 0.01f;
         } else if(player2.GetComponent<Powerup>().CheckCamSlowdown())
         {

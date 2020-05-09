@@ -37,7 +37,7 @@ public class Powerup : MonoBehaviour
             if(duration != 0.0f)
             {
                 duration = 0.0f;
-                GetComponent<CharacterController2D>().m_JumpForce /= 2;
+                GetComponent<CharacterController2D>().m_JumpForce /= jump_multiplier;
             }
         }
     }
@@ -87,7 +87,7 @@ public class Powerup : MonoBehaviour
         {
             super_jump = false;
             duration = 10.0f;
-            GetComponent<CharacterController2D>().m_JumpForce *= 2;
+            GetComponent<CharacterController2D>().m_JumpForce *= jump_multiplier;
             return true;
         } else
         {
