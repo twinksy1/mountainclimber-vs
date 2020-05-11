@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
             // Speed up player 2's cam
             Debug.Log("Speeding up player 2 cam");
             speedup2.GetComponent<Animator>().enabled = true;
-            speedup2.GetComponent<Animator>().Play("Speedup2");
+            speedup2.GetComponent<Animator>().Play("Speedup2", -1, 0);
             cam2.GetComponent<scroll>().speed += 0.01f;
         } else if(player1.GetComponent<Powerup>().CheckCamSlowdown())
         {
@@ -194,10 +194,6 @@ public class GameManager : MonoBehaviour
                 speedup1.GetComponent<Animator>().Play("Speedup");
                 cam1.GetComponent<scroll>().speed -= 0.01f;
             }
-        } else if(player1.GetComponent<Powerup>().CheckSuperJump())
-        {
-            // Make Player 1 jump higher
-
         }
 
         if(player2.GetComponent<Powerup>().CheckEnemySpeedup())
@@ -205,7 +201,7 @@ public class GameManager : MonoBehaviour
             // Speed up player 1's cam
             Debug.Log("Speeding up player 1 cam");
             speedup1.GetComponent<Animator>().enabled = true;
-            speedup1.GetComponent<Animator>().Play("Speedup");
+            speedup1.GetComponent<Animator>().Play("Speedup", -1, 0);
             cam1.GetComponent<scroll>().speed += 0.01f;
         } else if(player2.GetComponent<Powerup>().CheckCamSlowdown())
         {
@@ -215,10 +211,9 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Slowing down player 2 cam");
                 cam2.GetComponent<scroll>().speed -= 0.01f;
             }
-        } else if(player2.GetComponent<Powerup>().CheckSuperJump())
-        {
-            // Make player 2 jump higher
         }
+
+        /* Super Jump is handled in player's power up script */
         
         // Generate a crate
 

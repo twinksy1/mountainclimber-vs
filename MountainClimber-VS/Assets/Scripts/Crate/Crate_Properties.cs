@@ -24,6 +24,11 @@ public class Crate_Properties : MonoBehaviour
     // Kill crate object after collision
     public float secondsTilDeath = 0.5f;
 
+    // Power up prefabs
+    public Transform jumpBoost;
+    public Transform camSlow;
+    public Transform camSpeedup;
+
     void Start()
     {
         // Disable continuous animation
@@ -51,15 +56,18 @@ public class Crate_Properties : MonoBehaviour
                 {
                     case 0:
                         // Enemy Cam Speedup
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        Instantiate(camSpeedup, this.transform.position, Quaternion.identity);
                         break;
                     case 1:
                         // Cam Slowdown
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        Instantiate(camSlow, this.transform.position, Quaternion.identity);
                         break;
                     case 2:
                         // Super Jump
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        Instantiate(jumpBoost, this.transform.position, Quaternion.identity);
                         break;
                 }
             }
@@ -76,15 +84,18 @@ public class Crate_Properties : MonoBehaviour
                 {
                     case 0:
                         // Enemy Cam Speedup
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        Instantiate(camSpeedup, this.transform.position, Quaternion.identity);
                         break;
                     case 1:
                         // Cam Slowdown
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        Instantiate(camSlow, this.transform.position, Quaternion.identity);
                         break;
                     case 2:
                         // Super Jump
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        Instantiate(jumpBoost, this.transform.position, Quaternion.identity);
                         break;
                 }
             }

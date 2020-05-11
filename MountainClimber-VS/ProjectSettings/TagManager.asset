@@ -9,6 +9,9 @@ TagManager:
   - PlayerTwo
   - Ground
   - Wall
+  - JumpPowerup
+  - CamSlowPowerup
+  - CamSpeedupPowerup
   layers:
   - Default
   - TransparentFX
