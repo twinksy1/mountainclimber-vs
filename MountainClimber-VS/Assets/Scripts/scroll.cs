@@ -5,13 +5,14 @@
 public class scroll : MonoBehaviour
 {
     public Transform t;
-    public float speed = .1f, inc = .01f;
+    public float speed = .01f, inc = .01f;
     public int currentTime, interval = 13;
+
 
     // Update is called once per frame
     void Update()
     {
-        currentTime = (int)Time.time;
+        currentTime = (int)Time.timeSinceLevelLoad;
         if (currentTime > interval)
         {
             speed += inc;
