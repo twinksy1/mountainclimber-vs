@@ -17,6 +17,7 @@ public class Crate_Properties : MonoBehaviour
     public TextMeshProUGUI bonus_points;
     private AudioSource audioData;
     private int powerup_idx;
+    private bool spawned;
 
     // Check if player collided with this crate
     bool collided = false;
@@ -36,10 +37,12 @@ public class Crate_Properties : MonoBehaviour
         bonus_points.enabled = false;
         collided = false;
         powerup_idx = Random.Range(0, 3);
+        spawned = false;
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
+        if (spawned) return;
         // Collision detection
         if (collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo")
         {
@@ -52,24 +55,26 @@ public class Crate_Properties : MonoBehaviour
                 // Plays audio when colliding
                 audioData = GetComponent<AudioSource>();
                 audioData.Play();
-                switch(powerup_idx)
+                Vector2 pos = new Vector2(this.transform.position.x, this.transform.position.y + offset);
+                switch (powerup_idx)
                 {
                     case 0:
                         // Enemy Cam Speedup
                         //collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
-                        Instantiate(camSpeedup, this.transform.position, Quaternion.identity);
+                        Instantiate(camSpeedup, pos, Quaternion.identity);
                         break;
                     case 1:
                         // Cam Slowdown
                         //collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
-                        Instantiate(camSlow, this.transform.position, Quaternion.identity);
+                        Instantiate(camSlow, pos, Quaternion.identity);
                         break;
                     case 2:
                         // Super Jump
                         //collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
-                        Instantiate(jumpBoost, this.transform.position, Quaternion.identity);
+                        Instantiate(jumpBoost, pos, Quaternion.identity);
                         break;
                 }
+                spawned = true;
             }
             // Player attacks crate
             else if(collisionInfo.gameObject.GetComponent<PlayerMovement>().CheckAttack())
@@ -80,24 +85,26 @@ public class Crate_Properties : MonoBehaviour
                 // Plays audio when colliding
                 audioData = GetComponent<AudioSource>();
                 audioData.Play();
+                Vector2 pos = new Vector2(this.transform.position.x, this.transform.position.y + offset);
                 switch (powerup_idx)
                 {
                     case 0:
                         // Enemy Cam Speedup
                         //collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
-                        Instantiate(camSpeedup, this.transform.position, Quaternion.identity);
+                        Instantiate(camSpeedup, pos, Quaternion.identity);
                         break;
                     case 1:
                         // Cam Slowdown
                         //collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
-                        Instantiate(camSlow, this.transform.position, Quaternion.identity);
+                        Instantiate(camSlow, pos, Quaternion.identity);
                         break;
                     case 2:
                         // Super Jump
                         //collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
-                        Instantiate(jumpBoost, this.transform.position, Quaternion.identity);
+                        Instantiate(jumpBoost, pos, Quaternion.identity);
                         break;
                 }
+                spawned = true;
             }
         }
     }

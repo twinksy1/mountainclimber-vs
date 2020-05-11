@@ -13,8 +13,9 @@ public class PowerupCollision : MonoBehaviour
 
     void Start()
     {
+        // Launch object out of the crate
         float XForce = Random.Range(-MaxXForce, MaxXForce);
-        float YForce = Random.Range(-MaxYForce, MaxYForce);
+        float YForce = Random.Range(MaxYForce/2, MaxYForce);
         Vector2 force = new Vector2(XForce * Time.deltaTime, YForce * Time.deltaTime);
         rb.AddForce(force);
         collided = false;
@@ -22,6 +23,7 @@ public class PowerupCollision : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
+        if (collided) return;
         if(collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo")
         {
             // Collided with player

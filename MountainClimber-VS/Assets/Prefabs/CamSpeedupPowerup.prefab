@@ -112,7 +112,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -135,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3967389067152958781}
   MaxXForce: 100
-  MaxYForce: 100
+  MaxYForce: 200

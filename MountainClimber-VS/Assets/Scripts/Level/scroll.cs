@@ -35,10 +35,10 @@ public class scroll : MonoBehaviour
             anim.enabled = true;
             if(cam == 1)
             {
-                anim.Play("Speedup");
+                anim.Play("Speedup", -1, 0);
             } else
             {
-                anim.Play("Speedup2");
+                anim.Play("Speedup2", -1, 0);
             }
         }
         var cameraPosition = t.position;
