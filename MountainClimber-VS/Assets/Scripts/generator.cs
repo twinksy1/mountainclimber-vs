@@ -37,9 +37,14 @@ public class generator : MonoBehaviour
     private Vector3 endWall2;
     private Vector3 endMid;
     public int currentTime, interval = 13, stage = 1;
+    public bool unique = false;
+    GameObject settings;
 
     private void Awake()
     {
+        settings = GameObject.Find("SettingsManager");
+        SettingsManager uniqueToggle = settings.GetComponent<SettingsManager>();
+        unique = uniqueToggle.uniqueOn;
         //finds the end positions of the two starting blocks
         endPos = start.Find("End").position + new Vector3(0, 6);
         endPos2 = start2.Find("End").position + new Vector3(0, 2);
@@ -102,9 +107,18 @@ public class generator : MonoBehaviour
     //generates new platforms and grabs the new end points
     private void generateBlock()
     {
-        Transform chosen = blockList[Random.Range(0, blockList.Count)];
-        Transform nextPart = generateBlock(chosen, endPos);
-        Transform part2 = generateBlock(chosen, endPos2);
+        Transform chosen1 = blockList[Random.Range(0, blockList.Count)];
+        Transform chosen2;
+        if (unique)
+        {
+            chosen2 = blockList[Random.Range(0, blockList.Count)];
+        }
+        else
+        {
+            chosen2 = chosen1;
+        }
+        Transform nextPart = generateBlock(chosen1, endPos);
+        Transform part2 = generateBlock(chosen2, endPos2);
         endPos = nextPart.Find("End").position + new Vector3(0, 6);
         endPos2 = part2.Find("End").position + new Vector3(0, 6);
     }
