@@ -58,7 +58,7 @@ public class generator : MonoBehaviour
     private void Update()
     {
         currentTime = (int)Time.timeSinceLevelLoad;
-        if (currentTime > interval)
+        if(currentTime > interval)
         {
             if (stage < 3)
             {
