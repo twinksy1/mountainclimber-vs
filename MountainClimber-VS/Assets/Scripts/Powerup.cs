@@ -11,8 +11,9 @@ public class Powerup : MonoBehaviour
     // Slow down this player's cam
     private bool cam_slowdown;
     // Give this player a jump boost
+    public float duration = 10.0f;
     private bool super_jump;
-    private float duration;
+    private float curr_time;
     public float jump_multiplier = 1.5f;
     // Give bonus points
     private bool recieveBonus;
@@ -23,23 +24,27 @@ public class Powerup : MonoBehaviour
         cam_slowdown = false;
         super_jump = false;
         recieveBonus = false;
-        duration = 0.0f;
+        curr_time = duration;
     }
 
     void Update()
     {
         // Player only has extra high jumping for 10 secs
-        if(duration > 0.0f)
+        if(super_jump)
         {
-            duration -= 1.0f * Time.deltaTime;
-        } else
-        {
-            if(duration != 0.0f)
+            if(curr_time > 0.0f)
+            {
+                curr_time -= 1.0f * Time.deltaTime;
+            }
+
+            else
             {
                 duration = 0.0f;
-                GetComponent<CharacterController2D>().m_JumpForce /= 2;
+                GetComponent<CharacterController2D>().m_JumpForce /= jump_multiplier;
+                super_jump = false;
             }
-        }
+            
+        } 
     }
     // Mutators
     public void SetEnemySpeedup()
@@ -52,7 +57,12 @@ public class Powerup : MonoBehaviour
     }
     public void SetSuperJump()
     {
-        super_jump = true;
+        if(!super_jump)
+        {
+            super_jump = true;
+            curr_time = duration;
+            GetComponent<CharacterController2D>().m_JumpForce *= jump_multiplier;
+        }
     }
     public void SetBonusPoints()
     {
@@ -75,19 +85,6 @@ public class Powerup : MonoBehaviour
         if (cam_slowdown == true)
         {
             cam_slowdown = false;
-            return true;
-        } else
-        {
-            return false;
-        }
-    }
-    public bool CheckSuperJump()
-    {
-        if(super_jump == true)
-        {
-            super_jump = false;
-            duration = 10.0f;
-            GetComponent<CharacterController2D>().m_JumpForce *= 2;
             return true;
         } else
         {

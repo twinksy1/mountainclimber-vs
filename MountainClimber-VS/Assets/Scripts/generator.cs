@@ -53,7 +53,7 @@ public class generator : MonoBehaviour
         endWall2 = wall2.Find("End").position;
         endMid = middle.Find("End").position;
     }
-    
+
     //checks player locations relative to current end points and generate walls/platforms accordingly
     private void Update()
     {
@@ -98,7 +98,7 @@ public class generator : MonoBehaviour
         nextPart = Instantiate(block, position, Quaternion.identity);
         return nextPart;
     }
-    
+
     //generates new platforms and grabs the new end points
     private void generateBlock()
     {
