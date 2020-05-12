@@ -36,6 +36,7 @@ public class generator : MonoBehaviour
     private Vector3 endWall;
     private Vector3 endWall2;
     private Vector3 endMid;
+    public int currentTime, interval = 13, stage = 1;
 
     private void Awake()
     {
@@ -52,10 +53,19 @@ public class generator : MonoBehaviour
         endWall2 = wall2.Find("End").position;
         endMid = middle.Find("End").position;
     }
-    
+
     //checks player locations relative to current end points and generate walls/platforms accordingly
     private void Update()
     {
+        currentTime = (int)Time.timeSinceLevelLoad;
+        if (currentTime > interval)
+        {
+            if (stage < 3)
+            {
+                stage += 1;
+            }
+            interval += 10;
+        }
         if ((Vector3.Distance(player.position, endPos) < 100f) || (Vector3.Distance(player2.position, endPos2) < 100f))
         {
             generateBlock();
@@ -66,7 +76,7 @@ public class generator : MonoBehaviour
         }
     }
 
-    
+
     //generates new walls and grabs the new end points
     private void generateWall()
     {
@@ -88,7 +98,7 @@ public class generator : MonoBehaviour
         nextPart = Instantiate(block, position, Quaternion.identity);
         return nextPart;
     }
-    
+
     //generates new platforms and grabs the new end points
     private void generateBlock()
     {
