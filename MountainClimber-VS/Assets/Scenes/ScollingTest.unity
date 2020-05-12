@@ -682,6 +682,7 @@ MonoBehaviour:
   currentTime: 0
   interval: 13
   speedup: {fileID: 512288059}
+  anim: {fileID: 0}
   cam: 1
 --- !u!81 &297174675
 AudioListener:
@@ -1495,6 +1496,9 @@ MonoBehaviour:
   mBlock: {fileID: 2133376994882249413, guid: eda6109c2834b3841840c6c361dfdb28, type: 3}
   player: {fileID: 623827586}
   player2: {fileID: 1142015235}
+  currentTime: 0
+  interval: 13
+  stage: 1
 --- !u!4 &570693155
 Transform:
   m_ObjectHideFlags: 0
@@ -3898,6 +3902,7 @@ MonoBehaviour:
   currentTime: 0
   interval: 13
   speedup: {fileID: 1363163170}
+  anim: {fileID: 0}
   cam: 2
 --- !u!1 &2022219769
 GameObject:
