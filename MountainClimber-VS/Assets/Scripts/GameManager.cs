@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     private GameObject[] ground;
     private float crate_offsety = 0.1f;
     private float crate_offsetx = 1.0f;
+    private int total;
+    public int max_crates = 5;
 
     // Power up
     public float min_scroll_speed = 0.01f;
@@ -81,6 +83,9 @@ public class GameManager : MonoBehaviour
         main_cam.GetComponent<Camera>().enabled = true;
         cam1.GetComponent<Camera>().enabled = false;
         cam2.GetComponent<Camera>().enabled = false;
+
+        GameObject[] crates = GameObject.FindGameObjectsWithTag("Crate");
+        total = crates.Length;
     }
 
     void Update()
@@ -219,7 +224,7 @@ public class GameManager : MonoBehaviour
 
         // Crate for player 1
         int selected = Random.Range(0, chance);
-        if (selected == 1)
+        if (selected == 1 && total < max_crates)
         {
             float minx = cam1.transform.position.x - horizontalMaxDist;
             float maxx = cam1.transform.position.x + horizontalMaxDist;
@@ -242,9 +247,10 @@ public class GameManager : MonoBehaviour
 
             Vector2 pos = new Vector2(x, y);
             Transform new_crate = Instantiate(crate, pos, Quaternion.identity);
+            total++;
         }
         // Crate for player 2
-        else if(selected == 2)
+        else if(selected == 2 && total < max_crates)
         {
             float minx = cam2.transform.position.x - horizontalMaxDist;
             float maxx = cam2.transform.position.x + horizontalMaxDist;
@@ -267,10 +273,12 @@ public class GameManager : MonoBehaviour
 
             Vector2 pos = new Vector2(x, y);
             Transform new_crate = Instantiate(crate, pos, Quaternion.identity);
+            total++;
         }
 
         // Clean up old crates
         GameObject[] crates = GameObject.FindGameObjectsWithTag("Crate");
+        total = crates.Length;
         for(int i=0; i<crates.Length; i++)
         {
             float c1y = cam1.transform.position.y;
@@ -279,6 +287,7 @@ public class GameManager : MonoBehaviour
             if(cratey < c1y-verticalMaxDist && cratey < c2y-verticalMaxDist)
             {
                 Destroy(crates[i]);
+                total--;
             }
         }
     }
