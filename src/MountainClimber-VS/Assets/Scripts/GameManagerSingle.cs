@@ -134,12 +134,7 @@ public class GameManagerSingle : MonoBehaviour
 
         /* AM 05-08-20: Check at a later point to implement power ups in single player
         // Check if either player picked up a powerup
-        if(player1.GetComponent<Powerup>().CheckEnemySpeedup())
-        {
-            // Speed up player 2's cam
-            Debug.Log("Speeding up player 2 cam");
-            cam2.GetComponent<scroll>().speed += 0.01f;
-        } else if(player1.GetComponent<Powerup>().CheckCamSlowdown())
+       if(player1.GetComponent<Powerup>().CheckCamSlowdown())
         {
             // Slow down player 1's cam
             if(!(cam1.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
@@ -151,24 +146,6 @@ public class GameManagerSingle : MonoBehaviour
         {
             // Make Player 1 jump higher
 
-        }
-
-        if(player2.GetComponent<Powerup>().CheckEnemySpeedup())
-        {
-            // Speed up player 1's cam
-            Debug.Log("Speeding up player 1 cam");
-            cam1.GetComponent<scroll>().speed += 0.01f;
-        } else if(player2.GetComponent<Powerup>().CheckCamSlowdown())
-        {
-            // Slow down player 2's cam
-            if (!(cam2.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
-            {
-                Debug.Log("Slowing down player 2 cam");
-                cam2.GetComponent<scroll>().speed -= 0.01f;
-            }
-        } else if(player2.GetComponent<Powerup>().CheckSuperJump())
-        {
-            // Make player 2 jump higher
         }*/
         
         // Generate a crate
