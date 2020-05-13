@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 52c50f4e5ac2af74588a488b9ebf57e8
-  - enabled: 1
-    path: Assets/Scenes/ScollingTestSingle.unity
-    guid: 32f460e8f09f242a78b848f6d6d87484
   m_configObjects: {}
