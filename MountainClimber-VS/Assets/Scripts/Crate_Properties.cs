@@ -17,12 +17,18 @@ public class Crate_Properties : MonoBehaviour
     public TextMeshProUGUI bonus_points;
     private AudioSource audioData;
     private int powerup_idx;
+    private bool spawned;
 
     // Check if player collided with this crate
     bool collided = false;
     private float offset = 1.7f;
     // Kill crate object after collision
     public float secondsTilDeath = 0.5f;
+
+    // Power up prefabs
+    public Transform jumpBoost;
+    public Transform camSlow;
+    public Transform camSpeedup;
 
     void Start()
     {
@@ -31,12 +37,14 @@ public class Crate_Properties : MonoBehaviour
         bonus_points.enabled = false;
         collided = false;
         powerup_idx = Random.Range(0, 3);
+        spawned = false;
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
+        if (spawned) return;
         // Collision detection
-        if (collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo") //collisionInfo.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.0f &&
+        if (collisionInfo.gameObject.tag == "PlayerOne" || collisionInfo.gameObject.tag == "PlayerTwo")
         {
             // Player jumps on crate
             if (collisionInfo.gameObject.GetComponent<Transform>().position.y - t.position.y >= offset)
@@ -47,21 +55,26 @@ public class Crate_Properties : MonoBehaviour
                 // Plays audio when colliding
                 audioData = GetComponent<AudioSource>();
                 audioData.Play();
-                switch(powerup_idx)
+                Vector2 pos = new Vector2(this.transform.position.x, this.transform.position.y + offset);
+                switch (powerup_idx)
                 {
                     case 0:
                         // Enemy Cam Speedup
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        Instantiate(camSpeedup, pos, Quaternion.identity);
                         break;
                     case 1:
                         // Cam Slowdown
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        Instantiate(camSlow, pos, Quaternion.identity);
                         break;
                     case 2:
                         // Super Jump
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        Instantiate(jumpBoost, pos, Quaternion.identity);
                         break;
                 }
+                spawned = true;
             }
             // Player attacks crate
             else if(collisionInfo.gameObject.GetComponent<PlayerMovement>().CheckAttack())
@@ -72,21 +85,26 @@ public class Crate_Properties : MonoBehaviour
                 // Plays audio when colliding
                 audioData = GetComponent<AudioSource>();
                 audioData.Play();
+                Vector2 pos = new Vector2(this.transform.position.x, this.transform.position.y + offset);
                 switch (powerup_idx)
                 {
                     case 0:
                         // Enemy Cam Speedup
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetEnemySpeedup();
+                        Instantiate(camSpeedup, pos, Quaternion.identity);
                         break;
                     case 1:
                         // Cam Slowdown
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetCamSlowdown();
+                        Instantiate(camSlow, pos, Quaternion.identity);
                         break;
                     case 2:
                         // Super Jump
-                        collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        //collisionInfo.gameObject.GetComponent<Powerup>().SetSuperJump();
+                        Instantiate(jumpBoost, pos, Quaternion.identity);
                         break;
                 }
+                spawned = true;
             }
         }
     }
