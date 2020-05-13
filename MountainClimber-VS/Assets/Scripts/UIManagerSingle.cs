@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 // AM 05-13-20 updated showPaused & hidePaused to pause the cameras. fixes bug where the cameras would keep going
-public class UIManager : MonoBehaviour
+public class UIManagerSingle : MonoBehaviour
 {
     GameObject[] pauseObjects;
-    public GameManager gameManager;
+    public GameManagerSingle gameManagerSingle;
 
     // Start is called before the first frame update
     void Start()
@@ -72,16 +73,14 @@ public class UIManager : MonoBehaviour
         {
             g.SetActive(false);
         }
-
-        if (gameManager.cam1.GetComponent<scroll>().enabled == false)
+        
+        if (gameManagerSingle.cam1.GetComponent<scroll>().enabled == false)
         {
-            // resume camera's and scrolling for vs mode
-            gameManager.cam1.GetComponent<scroll>().enabled = true;
-            gameManager.cam2.GetComponent<scroll>().enabled = true;
-
-            gameManager.cam1.GetComponent<Camera>().enabled = true;
-            gameManager.cam2.GetComponent<Camera>().enabled = true;
+            // resume camera's and scrolling for single player
+            gameManagerSingle.cam1.GetComponent<scroll>().enabled = true;
+            gameManagerSingle.cam1.GetComponent<Camera>().enabled = true;
         }
+
     }
 
     // AM - 05-08-20 this function will show the pause menu by setting
@@ -93,14 +92,12 @@ public class UIManager : MonoBehaviour
             g.SetActive(true);
         }
 
-        if (gameManager.cam1.GetComponent<scroll>().enabled == true)
+        
+        if (gameManagerSingle.cam1.GetComponent<scroll>().enabled == true)
         {
-            // stop camera's and scrolling for vs mode
-            gameManager.cam1.GetComponent<scroll>().enabled = false;
-            gameManager.cam2.GetComponent<scroll>().enabled = false;
-
-            gameManager.cam1.GetComponent<Camera>().enabled = false;
-            gameManager.cam2.GetComponent<Camera>().enabled = false;
+            // stop camera's and scrolling for single player
+            gameManagerSingle.cam1.GetComponent<scroll>().enabled = false;
+            gameManagerSingle.cam1.GetComponent<Camera>().enabled = false;
         }
     }
 
