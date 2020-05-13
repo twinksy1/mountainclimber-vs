@@ -12,6 +12,8 @@ TagManager:
   - JumpPowerup
   - CamSlowPowerup
   - CamSpeedupPowerup
+  - ShowOnPause
+
   layers:
   - Default
   - TransparentFX
