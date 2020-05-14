@@ -1,0 +1,59 @@
+Juan Villasenor | Project Contribution
+
+05-10-2020: Implemented power up sprites
+-----------------------------------
+05-08-2020: Made a speedup animation that plays
+when a player's camera is speeding
+up
+-----------------------------------
+05-06-2020: Bug Fixes relating to power ups
+-----------------------------------
+05-06-2020: Added power ups
+-----------------------------------
+05-04-2020: Added colliders to walls
+-----------------------------------
+05-04-2020: Modified crate generation & degeneration
+-----------------------------------
+05-04-2020: Attack animation breaks colliding
+crates
+-----------------------------------
+05-03-2020: Fixed player attack animation
+-----------------------------------
+05-03-2020: Implemented a count down
+-----------------------------------
+05-02-2020: Implemented player & crate
+sound effects
+-----------------------------------
+04-28-2020: Changed tags on all prefab blocks &
+implemented random crate generation
+throughout level. Crates off-screen
+below are destroyed
+-----------------------------------
+04-28-2020: Added splitscreen
+-----------------------------------
+04-28-2020: Added second player with different
+mapped controls
+-----------------------------------
+04-27-2020: Implemented player interaction with
+crates. Jump on crates to break
+-----------------------------------
+04-27-2020: Made adjustments to crate object &
+made it give bonus points. Had to 
+modify PlayerMovement.cs
+-----------------------------------
+04-24-2020: Changed all texts to tmpro texts
+-----------------------------------
+04-21-2020: Implemented the crate object
+-----------------------------------
+04-16-2020: Implemented a game over screen, with
+animation
+-----------------------------------
+04-06-2020: Bounded players to on-screen
+-----------------------------------
+04-06-2020: Made a game manager object that keeps
+track of the entire game.
+ex) when game ends, when to restart
+-----------------------------------
+04-06-2020: Implemented a score tracking system
+-----------------------------------
+03-12-2020: Created a crate sprite sheet
