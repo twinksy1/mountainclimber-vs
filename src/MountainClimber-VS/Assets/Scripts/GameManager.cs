@@ -1,4 +1,5 @@
-﻿// Maintained by: Juan Villasenor
+﻿// GameManager.cs - This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// Maintained by: Juan Villasenor
 // AM: 04-20-20 tried to make a few names more human readable
 using System.Collections;
 using System.Collections.Generic;

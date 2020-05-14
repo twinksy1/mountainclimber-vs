@@ -1,4 +1,7 @@
-﻿// Maintained by: Antonio-Angel Medel
+﻿// UIManagerSingle.cs - is a derivative of the original UIManager script that is altered for single player. 
+// This controls the pause menu. It controls taking input from the user to activate the pause menu and pause all objects including cameras.
+// Pause menu allows you to resume play from the moment the player stopped, Restart the level or exit to the main menu.
+// Maintained by: Antonio-Angel Medel
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +44,7 @@ public class UIManagerSingle : MonoBehaviour
     }
 
 
-    // AM - 04-26-20 Reload will reload the current level that the player is at.
+    // AM - 04-26-20 Reload() will reload the current level that the player is at.
     // sceneToLoad will be the name of the scene that we want to load
     // This name will be added in the unity editor. It should be "ScollingTest"
     public void Reload(string sceneToLoad)
@@ -49,7 +52,7 @@ public class UIManagerSingle : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    // AM - 05-08-20 this function is what actually gives the button
+    // AM - 05-08-20 pauseControl() is what actually gives the button
     // the ability to pause the scene
     public void pauseControl()
     {
@@ -65,7 +68,7 @@ public class UIManagerSingle : MonoBehaviour
         }
     }
 
-    // AM - 05-08-20 this function will hide the pause menu by
+    // AM - 05-08-20 hidePaused() will hide the pause menu by
     // setting to false all the objects with the showOnpause tag
     public void hidePaused()
     {
@@ -83,7 +86,7 @@ public class UIManagerSingle : MonoBehaviour
 
     }
 
-    // AM - 05-08-20 this function will show the pause menu by setting
+    // AM - 05-08-20 showPaused() will show the pause menu by setting
     // to true all the objects with the showOnPause tag
     public void showPaused()
     {

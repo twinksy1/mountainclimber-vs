@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// GeneratorSingle.cs - is a derivative of the original Generator script. 
+// This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

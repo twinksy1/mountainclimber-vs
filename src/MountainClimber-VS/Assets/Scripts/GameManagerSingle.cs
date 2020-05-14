@@ -1,4 +1,6 @@
-﻿// Maintained by: Antonio-Angel Medel
+﻿// GameManagerSingle.cs - is a derivative of the original GameManager Script. 
+// This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// Maintained by: Antonio-Angel Medel
 // AM: 04-20-20: tried to make a few names more human readable
 // AM: 05-08-20: updated the original GameManager script to be for single player
 using System.Collections;
