@@ -1,4 +1,11 @@
 ﻿// Maintained by: Juan Villasenor
+// JV: 05-06-2020: Added random power up to each crate spawned
+// JV: 05-04-2020: Added player pickaxe interaction
+// JV: 05-02-2020: Added crate sound & small fixes
+// JV: 04-27-2020: Crate tweaks
+// JV: 04-24-2020: Made animation play upon destruction of object
+// JV: 04-23-2020: Applied proper collision detection to crate
+// JV: 04-21-2020: Creation of script
 // Crate object that interacts with players & the environment,
 // rewards players with a bonus 10 points when they break it
 using System.Collections;

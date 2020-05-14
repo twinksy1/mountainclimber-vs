@@ -1,4 +1,6 @@
 ﻿// Maintained by: Juan Villasenor
+// JV: 05-11-2020: Fixed super jump remaining activated glitch
+// JV: 05-10-2020: Creation of script
 // Script to handle power ups
 using System.Collections;
 using System.Collections.Generic;
