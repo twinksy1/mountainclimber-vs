@@ -1,4 +1,5 @@
-﻿// Maintained by: Juan Villasenor
+// GameManager.cs - This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// Maintained by: Juan Villasenor
 // JV: 05-08-2020: Added speedup animation play upon camera speedup
 // JV: 05-03-2020: Added countdown with animation
 // JV: 04-28-2020: Implemented player 2 into script & small fixes

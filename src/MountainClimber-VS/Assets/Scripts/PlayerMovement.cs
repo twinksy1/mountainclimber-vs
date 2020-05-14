@@ -1,4 +1,5 @@
-﻿// JV 05-06-2020: Added latching ability
+// PlayerMovement.cs - Is  the logic of the player. It controls the animations and movements of the player.
+// JV 05-06-2020: Added latching ability
 // JV 05-04-2020: Modified code for better attack animation functionality
 // JV 05-02-2020: Added player jump & land sounds
 //AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
