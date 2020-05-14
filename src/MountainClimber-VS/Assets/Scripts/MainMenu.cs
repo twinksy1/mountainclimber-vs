@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// MainMenu.cs - this is the logic for the main menu. It has a function to load levels from the game, control your options, and quit. Vs and single player
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

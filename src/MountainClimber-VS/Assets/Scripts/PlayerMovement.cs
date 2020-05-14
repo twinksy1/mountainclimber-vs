@@ -1,8 +1,9 @@
-﻿//JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
+﻿// PlayerMovement.cs - Is  the logic of the player. It controls the animations and movements of the player.
+// JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
 //              Did not remove or alter any other code - Juan
-//JV 04-28-2020: Added modifications for two player support - Juan
-//AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
-//JV 05-02-2020: Added player jump & land sounds
+// JV 04-28-2020: Added modifications for two player support - Juan
+// AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
+// JV 05-02-2020: Added player jump & land sounds
 // JV 05-04-2020: Modified code for better attack animation functionality
 // JV 05-06-2020: Added latching ability
 using System.Collections;
