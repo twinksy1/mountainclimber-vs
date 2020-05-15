@@ -1,0 +1,58 @@
+comments:
+// PlayerMovement.cs - Is  the logic of the player. It controls the animations and movements of the player.
+// AM 05-02-20 check to see if the animator should play the attack animation
+// AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
+
+// MainMenu.cs - this is the logic for the main menu. It has a function to load levels from the game, control your options, and quit. Vs and single player
+//AM 05-13-2020 since functions were single lines I updated them using arrow syntax
+//AM 05-08-2020: updated script to allow the main menu to load any scene
+
+// GeneratorSingle.cs - is a derivative of the original Generator script. 
+// This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
+//AM 5-08-20: updated original generator script to be for single player
+// generator.cs - This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
+
+// GameManagerSingle.cs - is a derivative of the original GameManager Script. 
+// This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// AM: 05-08-20: updated the original GameManager script to be for single player
+// AM: 05-08-20: Check at a later point to implement power ups in single player
+
+// UIManagerSingle.cs - is a derivative of the original UIManager script that is altered for single player. 
+// UIManager.cs - This controls the pause menu. It controls taking input from the user to activate the pause menu and pause all objects including cameras.
+// Pause menu allows you to resume play from the moment the player stopped, Restart the level or exit to the main menu.
+// AM: 05-13-20 updated showPaused & hidePaused to pause the cameras. fixes bug where the cameras would keep going
+// AM: 05-08-20 the p button will pause and unpause the game
+// AM: 05-08-20 pauseControl() is what actually gives the button the ability to pause the scene
+// AM - 05-08-20 hidePaused() will hide the pause menu by setting to false all the objects with the showOnpause tag
+// AM - 05-08-20 showPaused() will show the pause menu by setting to true all the objects with the showOnPause tag
+// AM - 04-26-20 Reload() will reload the current level that the player is at.
+    // sceneToLoad will be the name of the scene that we want to load
+    // This name will be added in the unity editor. It should be "ScollingTest"
+
+// GameManager.cs - This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// AM: 04-20-20 tried to make a few names more human readable
+
+commits:
+committed on Mar 08 Went through files and added comments for functions and clarifying comments for functions with unclear actions.
+committed on Mar 09 Added clarifying comments to player movements functions and variables.
+committed on Apr 20 gitignore updated to not include .zip/.app files
+committed on Apr 20 Deleted JumpTest from working branch
+committed on Apr 20 There was an issue where random generation wasn't working with the scrolling test. Both are now working. 
+    This commit also has some variable name changes to help with readability of some of the code.
+committed on Apr 20 added how to build gif
+committed on Apr 20 updated README.md
+committed on Apr 26 Updated Menu selection screne. The items on the main menu now properly reflect the modes we're working on
+committed on Apr 28 All of my current testing is being done is single player. I needed a copy of the single player in order to get
+committed on May 02 Added an attack animation with a trigger Attack button for first player is left shift, for player two is right shift
+committed on May 08 I implemented a pause menu. Right now it doesn't stop the cameras from moving. That will be fixed in a future commit
+committed on May 08 This commit is a large one. I implemented a single player scene. I created new scripts for single player. 
+    I deleted an unused copy of our main game object. I updated Main menu to reflect single player and vs mode. 
+    Currently single player is still in the vs mode camera setting. This will be fixed in a future update
+committed on May 12 An unfortunate misshap. I pushed conflicts to master and it broke the project. we had to revert my last two commits.
+committed on May 13 I added the original single player script I had. I added the pause menu I had. Pause now stops the cameras as well as all the objects in the game. 
+    Single player angle still needs to be adjusted.
+committed on May 13 Updated the file structure to reflect the final project structure
+committed on May 13 added my individual effort/log file and added updated comments describing what each script does
+
+
+
