@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class generator : MonoBehaviour
+public class GeneratorDouble : MonoBehaviour
 {
 
     //JL 3-20: added the game start instantiation
