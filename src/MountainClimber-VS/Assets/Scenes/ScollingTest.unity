@@ -358,7 +358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf59420d677046ec8bd45bb3ecf6cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerSingle: {fileID: 0}
   gameManager: {fileID: 2022219770}
 --- !u!4 &68756845
 Transform:
@@ -1662,6 +1661,39 @@ MonoBehaviour:
   - {fileID: 4486203615635921970, guid: 32ba766bfda80f44f86fd0b330d442db, type: 3}
   - {fileID: 5721675360173603286, guid: fd902f7d237f656499e8a79f3384692d, type: 3}
   - {fileID: 4299944567539252886, guid: 2e7ac7e37edfac04bbd58b7779ec926c, type: 3}
+  - {fileID: 4486203615635921970, guid: 3bb7ba51e0a20fe448a15647e120d34c, type: 3}
+  - {fileID: 3544068252528087089, guid: 93c7dd7ce384b324f945a9c3ded34a04, type: 3}
+  rockList:
+  - {fileID: 4238355928923584484, guid: 5883766762b5ade40b087df5934aae56, type: 3}
+  - {fileID: 5114451268885543708, guid: 84c69eff65eafd1499a5523f26533a72, type: 3}
+  - {fileID: 345819165864000253, guid: d80d9eac7ea7d574e9de04f09d21c8c8, type: 3}
+  - {fileID: 3104858906236655360, guid: 0bb6065ddecfbc54a8218eaa2df23be8, type: 3}
+  - {fileID: 3036182527735217664, guid: 95ba31a112878ac40973e81326050a68, type: 3}
+  - {fileID: 5032224793426011642, guid: 5a5cb4dc4c65b354ea2841d79dc80021, type: 3}
+  - {fileID: 7006956942684085427, guid: 46d4caa268b3e134c952535b1ea48e02, type: 3}
+  - {fileID: 643239669048395628, guid: 5fe7aec4d5451be4ebbd58e48ad3204b, type: 3}
+  - {fileID: 7931030919388178010, guid: 5012c265e12242d46a9efb0d1f3da7db, type: 3}
+  - {fileID: 1434797727360562397, guid: df9ee9b436ef844469b672f4f5071d3e, type: 3}
+  - {fileID: 985622654258591114, guid: e1031ebc04818004d86e403c9a331d72, type: 3}
+  - {fileID: 8044559612748089465, guid: 1bbe76f123d3b9b4ca270e50d3c47d18, type: 3}
+  - {fileID: 6669544771389165745, guid: e429450379035324eb2ae79ed66c93cb, type: 3}
+  - {fileID: 7769890561215684707, guid: 151a5e1b8d1d7844780bc36e6d347296, type: 3}
+  iceList:
+  - {fileID: 5848155825951130687, guid: e2fe11a04f1526c47977700c0a3c6bc6, type: 3}
+  - {fileID: 6499379781638942691, guid: c8306f41c89e8804fb082408d1cbeeec, type: 3}
+  - {fileID: 2087246701429388793, guid: 2be0e6846eb0ace45bcabcccd5a535e9, type: 3}
+  - {fileID: 6449806843428484079, guid: c5d2030054fc6954dabb882d87bdf761, type: 3}
+  - {fileID: 6448381630231701952, guid: 912b7eafc2a42f04b88b0a65d56651e9, type: 3}
+  - {fileID: 5453066263487436791, guid: 49e489ea2e6a9c645b8540d8313c78e6, type: 3}
+  - {fileID: 1977665979661537202, guid: bc49a517ac1cab2418ba937bf4c7b4b5, type: 3}
+  - {fileID: 215423939881210680, guid: eca583332f41c76429d1dcaad39e5020, type: 3}
+  - {fileID: 2756285881718263603, guid: ca6008780d9626644ae8999e27487a53, type: 3}
+  - {fileID: 330988897626620405, guid: 922093590218f38468033e5c4505ab0b, type: 3}
+  - {fileID: 8615220331910038624, guid: 595a60982b5b2814abafa83e3e0874f5, type: 3}
+  - {fileID: 8226614271369904743, guid: 5fa61c6965381df44978242b0ae198fa, type: 3}
+  - {fileID: 1830979051294679160, guid: 01a01df2b3649ee43a5ede7d64b56a80, type: 3}
+  - {fileID: 8253015189038820621, guid: b396f13c13e514e469a628c750dcca9b, type: 3}
+  currentList: []
   start: {fileID: 8287446163188675665, guid: 7f6677fd3036a5045a62b65dc2c770dc, type: 3}
   start2: {fileID: 242239067}
   wall: {fileID: 2052139957}
@@ -1670,11 +1702,22 @@ MonoBehaviour:
   rBlock: {fileID: 4878315994444546605, guid: eb60a62caa8aa3f41bf59e82c7f9e487, type: 3}
   lBlock: {fileID: 4780774553535716344, guid: f2d51895ce372054b9a4a870abb1dcc4, type: 3}
   mBlock: {fileID: 2133376994882249413, guid: eda6109c2834b3841840c6c361dfdb28, type: 3}
+  rRock: {fileID: 1873561123243145561, guid: ce440ec4f3737d240a48c8ed3d2d6621, type: 3}
+  lRock: {fileID: 4272595332705327270, guid: 4b4c5fb22bd8cd24b8b72bb6387354b5, type: 3}
+  mRock: {fileID: 3937710453098355207, guid: 5956fabf2f90f5c44b2d7b8a0bd56e36, type: 3}
+  rIce: {fileID: 8679747372096930380, guid: 5bd7905809799a4418c4c71674813ad8, type: 3}
+  lIce: {fileID: 7040442667924117015, guid: c7a7ed21ed8906440a21ed616178a2cf, type: 3}
+  mIce: {fileID: 5487661328156674206, guid: af2e8b59edfa626499188aa854afd470, type: 3}
+  right: {fileID: 0}
+  left: {fileID: 0}
+  mid: {fileID: 0}
   player: {fileID: 623827586}
   player2: {fileID: 1142015235}
   currentTime: 0
   interval: 13
   stage: 1
+  counter: 0
+  unique: 0
 --- !u!4 &570693155
 Transform:
   m_ObjectHideFlags: 0

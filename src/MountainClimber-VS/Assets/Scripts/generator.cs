@@ -11,8 +11,11 @@ public class generator : MonoBehaviour
     //JL 4-26-20: added distance checking for wall/platform generation
     //JL 4-28-20: added wall generation and 2nd player platforms
 
-    //List of prefabs to generate platforms
+    //Lists of prefabs to generate platforms
     [SerializeField] private List<Transform> blockList;
+    [SerializeField] private List<Transform> rockList;
+    [SerializeField] private List<Transform> iceList;
+    [SerializeField] private List<Transform> currentList;
     //The two starting prefabs
     [SerializeField] private Transform start;
     [SerializeField] private Transform start2;
@@ -24,6 +27,15 @@ public class generator : MonoBehaviour
     [SerializeField] private Transform rBlock;
     [SerializeField] private Transform lBlock;
     [SerializeField] private Transform mBlock;
+    [SerializeField] private Transform rRock;
+    [SerializeField] private Transform lRock;
+    [SerializeField] private Transform mRock;
+    [SerializeField] private Transform rIce;
+    [SerializeField] private Transform lIce;
+    [SerializeField] private Transform mIce;
+    [SerializeField] private Transform right;
+    [SerializeField] private Transform left;
+    [SerializeField] private Transform mid;
     //Players
     [SerializeField] private Transform player;
     [SerializeField] private Transform player2;
@@ -37,10 +49,19 @@ public class generator : MonoBehaviour
     private Vector3 endWall;
     private Vector3 endWall2;
     private Vector3 endMid;
-    public int currentTime, interval = 13, stage = 1;
+
+    //variables tracking and concerning game length
+    public int currentTime, interval = 13, stage = 1, counter = 0;
+
+    //for generation settings
+    public bool unique = false;
+    GameObject settings;
 
     private void Awake()
     {
+        settings = GameObject.Find("SettingsManager");
+        SettingsManager uniqueToggle = settings.GetComponent<SettingsManager>();
+        unique = uniqueToggle.uniqueOn;
         //finds the end positions of the two starting blocks
         endPos = start.Find("End").position + new Vector3(0, 6);
         endPos2 = start2.Find("End").position + new Vector3(0, 2);
@@ -59,17 +80,18 @@ public class generator : MonoBehaviour
     private void Update()
     {
         currentTime = (int)Time.timeSinceLevelLoad;
-        if(currentTime > interval)
+        if(counter > 3)
         {
             if (stage < 3)
             {
                 stage += 1;
             }
-            interval += 10;
+            counter = 0;
         }
         if ((Vector3.Distance(player.position, endPos) < 100f) || (Vector3.Distance(player2.position, endPos2) < 100f))
         {
             generateBlock();
+            counter += 1;
         }
         if ((Vector3.Distance(player.position, endWall) < 100f) || (Vector3.Distance(player2.position, endWall2) < 100f))
         {
@@ -81,14 +103,32 @@ public class generator : MonoBehaviour
     //generates new walls and grabs the new end points
     private void generateWall()
     {
+        if (stage == 1)
+        {
+            left = lBlock;
+            right = rBlock;
+            mid = mBlock;
+        }
+        else if(stage == 2)
+        {
+            left = lRock;
+            right = rRock;
+            mid = mRock;
+        }
+        else
+        {
+            left = lIce;
+            right = rIce;
+            mid = mIce;
+        }
         Transform nextWall;
-        nextWall = Instantiate(lBlock, endWall, Quaternion.identity);
+        nextWall = Instantiate(left, endWall, Quaternion.identity);
         endWall = nextWall.Find("End").position;
         Transform nextWall2;
-        nextWall2 = Instantiate(rBlock, endWall2, Quaternion.identity);
+        nextWall2 = Instantiate(right, endWall2, Quaternion.identity);
         endWall2 = nextWall2.Find("End").position;
         Transform middleWall;
-        middleWall = Instantiate(mBlock, endMid, Quaternion.identity);
+        middleWall = Instantiate(mid, endMid, Quaternion.identity);
         endMid = middleWall.Find("End").position;
     }
 
@@ -103,9 +143,30 @@ public class generator : MonoBehaviour
     //generates new platforms and grabs the new end points
     private void generateBlock()
     {
-        Transform chosen = blockList[Random.Range(0, blockList.Count)];
-        Transform nextPart = generateBlock(chosen, endPos);
-        Transform part2 = generateBlock(chosen, endPos2);
+        if (stage == 1)
+        {
+            currentList = blockList;
+        }
+        else if (stage == 2)
+        {
+            currentList = rockList;
+        }
+        else
+        {
+            currentList = iceList;
+        }
+        Transform chosen1 = currentList[Random.Range(0, currentList.Count)];
+        Transform chosen2;
+        if (unique)
+        {
+            chosen2 = currentList[Random.Range(0, currentList.Count)];
+        }
+        else
+        {
+            chosen2 = chosen1;
+        }
+        Transform nextPart = generateBlock(chosen1, endPos);
+        Transform part2 = generateBlock(chosen2, endPos2);
         endPos = nextPart.Find("End").position + new Vector3(0, 6);
         endPos2 = part2.Find("End").position + new Vector3(0, 6);
     }
