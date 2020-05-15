@@ -168,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("IsFalling", false);
             }
-            else if(vectorbool == false)
+            else if(vectorbool == false && isLatched == false)
             {
                 animator.SetBool("IsJump", false);
                 animator.SetBool("IsFalling", true);
@@ -284,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("IsFalling", false);
             }
-            else if (vectorbool == false)
+            else if (vectorbool == false && isLatched == false)
             {
                 animator.SetBool("IsJump", false);
                 animator.SetBool("IsFalling", true);
