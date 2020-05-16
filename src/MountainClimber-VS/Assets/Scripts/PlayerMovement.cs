@@ -1,4 +1,5 @@
 // PlayerMovement.cs - Is  the logic of the player. It controls the animations and movements of the player.
+// JV 05-15-2020: Fixed jump noise playing when falling
 // JV 05-06-2020: Added latching ability
 // JV 05-04-2020: Modified code for better attack animation functionality
 // JV 05-02-2020: Added player jump & land sounds
@@ -89,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 jump = true;
                 // Play the jump sound
-                if(animator.GetBool("IsJump") == false)
+                // JV 05-15-2020: Fixed jump noise playing when falling
+                if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                 {
                     jump_sound.PlayOneShot(jump_sound.clip, volume);
                 }
@@ -135,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
                     isLatched = false;
                     jump = true;
                     // Play the jump sound
-                    if (animator.GetBool("IsJump") == false)
+                    if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                     {
                         jump_sound.PlayOneShot(jump_sound.clip, volume);
                     }
@@ -198,11 +200,12 @@ public class PlayerMovement : MonoBehaviour
                 locationLock = false;
             }
 
-            if (Input.GetButtonDown("Jump1"))
+            if (Input.GetButtonDown("Jump1") && latch_count > 0)
             {
                 jump = true;
                 // Play the jump sound
-                if (animator.GetBool("IsJump") == false)
+                // JV 05-15-2020: Fixed jump noise playing when falling
+                if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                 {
                     jump_sound.PlayOneShot(jump_sound.clip, volume);
                 }
@@ -250,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
                     isLatched = false;
                     jump = true;
                     // Play the jump sound
-                    if (animator.GetBool("IsJump") == false)
+                    if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                     {
                         jump_sound.PlayOneShot(jump_sound.clip, volume);
                     }
