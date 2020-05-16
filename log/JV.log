@@ -1,5 +1,8 @@
 Juan Villasenor | Project Contribution
 
+05-15-2020: Fixed jump noise playing
+when falling
+-----------------------------------
 05-15-2020: Fixed background bug & 
 added missing collision to platform
 prefab
