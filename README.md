@@ -8,5 +8,6 @@ A competitive split-screen multiplayer auto scrolling platformer, drawing inspir
 
 # How to build on Unity
 Unity Version: 2019.3.x or newer
+
 Click: File > Build Settings > Select appropriate "Target Platform" > Build 
 <a href="https://imgflip.com/gif/3xg0qh"><img src="https://imgflip.com/gif/3xg0qh"/> via Imgflip</a>
