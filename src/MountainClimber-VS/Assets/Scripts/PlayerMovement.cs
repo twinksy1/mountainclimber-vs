@@ -1,11 +1,12 @@
-﻿// PlayerMovement.cs - Is  the logic of the player. It controls the animations and movements of the player.
+// PlayerMovement.cs - Is  the logic of the player. It controls the animations and movements of the player.
+// JV 05-15-2020: Fixed jump noise playing when falling
+// JV 05-06-2020: Added latching ability
+// JV 05-04-2020: Modified code for better attack animation functionality
+// JV 05-02-2020: Added player jump & land sounds
+//AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
+// JV 04-28-2020: Added modifications for two player support - Juan
 // JV 04-23-2020: Added a boolean variable and two functions that help correlate the bonus points recieved from breaking crates
 //              Did not remove or alter any other code - Juan
-// JV 04-28-2020: Added modifications for two player support - Juan
-// AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
-// JV 05-02-2020: Added player jump & land sounds
-// JV 05-04-2020: Modified code for better attack animation functionality
-// JV 05-06-2020: Added latching ability
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -89,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 jump = true;
                 // Play the jump sound
-                if(animator.GetBool("IsJump") == false)
+                // JV 05-15-2020: Fixed jump noise playing when falling
+                if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                 {
                     jump_sound.PlayOneShot(jump_sound.clip, volume);
                 }
@@ -135,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
                     isLatched = false;
                     jump = true;
                     // Play the jump sound
-                    if (animator.GetBool("IsJump") == false)
+                    if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                     {
                         jump_sound.PlayOneShot(jump_sound.clip, volume);
                     }
@@ -168,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("IsFalling", false);
             }
-            else if(vectorbool == false)
+            else if(vectorbool == false && isLatched == false)
             {
                 animator.SetBool("IsJump", false);
                 animator.SetBool("IsFalling", true);
@@ -198,11 +200,12 @@ public class PlayerMovement : MonoBehaviour
                 locationLock = false;
             }
 
-            if (Input.GetButtonDown("Jump1"))
+            if (Input.GetButtonDown("Jump1") && latch_count > 0)
             {
                 jump = true;
                 // Play the jump sound
-                if (animator.GetBool("IsJump") == false)
+                // JV 05-15-2020: Fixed jump noise playing when falling
+                if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                 {
                     jump_sound.PlayOneShot(jump_sound.clip, volume);
                 }
@@ -250,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
                     isLatched = false;
                     jump = true;
                     // Play the jump sound
-                    if (animator.GetBool("IsJump") == false)
+                    if (animator.GetBool("IsJump") == false && animator.GetBool("IsFalling") == false)
                     {
                         jump_sound.PlayOneShot(jump_sound.clip, volume);
                     }
@@ -284,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("IsFalling", false);
             }
-            else if (vectorbool == false)
+            else if (vectorbool == false && isLatched == false)
             {
                 animator.SetBool("IsJump", false);
                 animator.SetBool("IsFalling", true);

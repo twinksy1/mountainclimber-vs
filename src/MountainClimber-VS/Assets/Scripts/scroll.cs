@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using TMPro;
-
+﻿// JV 05-11-2020: Added speedup animation
 // JV 04-28-2020: Modified code so its applicable to all camera objects
-// JV 05-11-2020: Added speedup animation
+using UnityEngine;
+using TMPro;
 
 public class scroll : MonoBehaviour
 {

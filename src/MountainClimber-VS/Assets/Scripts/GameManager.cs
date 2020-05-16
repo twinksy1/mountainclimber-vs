@@ -1,6 +1,14 @@
-﻿// GameManager.cs - This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// GameManager.cs - This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
 // Maintained by: Juan Villasenor
+// JV: 05-15-2020: Added background disable for both child cameras
+// JV: 05-08-2020: Added speedup animation play upon camera speedup
+// JV: 05-03-2020: Added countdown with animation
+// JV: 04-28-2020: Implemented player 2 into script & small fixes
+// JV: 04-21-2020: Fixed too high up glitch
 // AM: 04-20-20 tried to make a few names more human readable
+// JV: 04-16-2020: Added game over screen with animation
+// JV: 04-08-2020: Added UI elements & level restart
+// JV: 04-06-2020: Creation of this script
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +54,8 @@ public class GameManager : MonoBehaviour
     private bool gameover;
     public TextMeshProUGUI speedup1;
     public TextMeshProUGUI speedup2;
+    public Canvas bg1;
+    public Canvas bg2;
 
     // Countdown
     public float counter = 3f;
@@ -147,6 +157,8 @@ public class GameManager : MonoBehaviour
             // Stop Player 1 movement
             player1.GetComponent<PlayerMovement>().enabled = false;
             player2.GetComponent<PlayerMovement>().enabled = false;
+            bg1.enabled = false;
+            bg2.enabled = false;
 
             StartCoroutine(DelayTilRestart());
         }
@@ -165,6 +177,8 @@ public class GameManager : MonoBehaviour
             // Stop Player movement
             player1.GetComponent<PlayerMovement>().enabled = false;
             player2.GetComponent<PlayerMovement>().enabled = false;
+            bg1.enabled = false;
+            bg2.enabled = false;
 
             StartCoroutine(DelayTilRestart());
         }
