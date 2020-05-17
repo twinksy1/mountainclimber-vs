@@ -15,8 +15,10 @@ Who can get to the top first? Beat your friend climbing the perilous mountain. D
 A competitive split-screen multiplayer auto scrolling platformer, drawing inspiration from classic platformers like Super Mario as well as head-to-head competition featuring disruption similar to Puyo Puyo Tetris.
 
 # Controls
-                player 1    player 2
-Movement:       W, A, S, D  Arrow keys
-Attack/Action:  left shift  right shift
-Pause Menu:     p           p
+               | player 1  |  player 2
+-------------- | --------- | ---------
+Movement:      | W, A, S, D | Arrow keys
+Attack/Action: | left shift | right shift
+Pause Menu:    | p          | p
+
 Options:        Player unique terrain (when in VS Mode, the two players can have unique procedurally generated terrains. Players have the same terrain by default)
