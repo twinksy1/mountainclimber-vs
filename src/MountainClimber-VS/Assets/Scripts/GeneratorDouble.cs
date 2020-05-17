@@ -1,5 +1,5 @@
 
-﻿// generator.cs - This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
+﻿// GeneratorDouble.cs - This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +11,7 @@ public class GeneratorDouble : MonoBehaviour
     //JL 4-20: added generation on update
     //JL 4-26-20: added distance checking for wall/platform generation
     //JL 4-28-20: added wall generation and 2nd player platforms
+    //AM 5-16-20: updated file description
 
     //Lists of prefabs to generate platforms
     [SerializeField] private List<Transform> blockList;

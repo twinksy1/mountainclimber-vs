@@ -3,6 +3,7 @@
 // Maintained by: Antonio-Angel Medel
 // AM: 04-20-20: tried to make a few names more human readable
 // AM: 05-08-20: updated the original GameManager script to be for single player
+// AM: 05-08-20: added crates, speed up animations, background, and updated Game over for single player
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,11 +19,10 @@ public class GameManagerSingle : MonoBehaviour
     public int p1Score = 0;
     // Bonus Scores from breaking crates
     public int p1BonusScore = 0;
-    private string loser;
 
     // References main camera
-    public Camera main_cam;
-    public Camera cam1; // Player 1
+    public Camera main_cam; // single player view
+    public float starting_speed = 0.01f;
 
     // Score offset
     public const float scoreOffset = 5.6f;
@@ -40,6 +40,9 @@ public class GameManagerSingle : MonoBehaviour
     string[] gameover_displays = new string[4] { "Gameover!\nOOOFFFF", "Gameover!\nBetter luck next time :O\n", "!gAmeOVer?\n", "At least you tried :)\n" };
     int show;
     private bool gameover;
+    public TextMeshProUGUI speedup1;
+    public Canvas Bg1;
+
 
     // Countdown
     public float counter = 3f;
@@ -52,6 +55,8 @@ public class GameManagerSingle : MonoBehaviour
     private GameObject[] ground;
     private float crate_offsety = 0.1f;
     private float crate_offsetx = 1.0f;
+    private int total;
+    public int max_crates = 5;
 
     // Power up
     public float min_scroll_speed = 0.01f;
@@ -64,12 +69,14 @@ public class GameManagerSingle : MonoBehaviour
         show = Random.Range(0, 4);
         gameover = false;
         count_time = counter;
+        speedup1.GetComponent<Animator>().enabled = false;
 
         // Disable scripts and child cams for countdown on shared screen
         player1.GetComponent<PlayerMovement>().enabled = false;
-        cam1.GetComponent<scroll>().enabled = false;
-        main_cam.GetComponent<Camera>().enabled = true;
-        cam1.GetComponent<Camera>().enabled = false;
+        main_cam.GetComponent<scroll>().enabled = false;
+
+        GameObject[] crates = GameObject.FindGameObjectsWithTag("Crate");
+        total = crates.Length;
     }
 
     void Update()
@@ -96,9 +103,7 @@ public class GameManagerSingle : MonoBehaviour
                 // Set all scripts to true and change to splitscreen
                 countdown.enabled = false;
                 player1.GetComponent<PlayerMovement>().enabled = true;
-                cam1.GetComponent<scroll>().enabled = true;
-                main_cam.GetComponent<Camera>().enabled = false;
-                cam1.GetComponent<Camera>().enabled = true;
+                main_cam.GetComponent<scroll>().enabled = true;
                 rearranged = true;
             }
         }
@@ -110,21 +115,23 @@ public class GameManagerSingle : MonoBehaviour
             p1Score = new_player1_score;
         }
 
-        // Player 1
-        float xdist = Mathf.Abs(player1.transform.position.x - cam1.transform.position.x);
 
-        if (player1.transform.position.y <= cam1.transform.position.y - verticalMaxDist || xdist > horizontalMaxDist)
+        // Player 1
+        float xdist = Mathf.Abs(player1.transform.position.x - main_cam.transform.position.x);
+
+        if (player1.transform.position.y <= main_cam.transform.position.y - verticalMaxDist || xdist > horizontalMaxDist)
         {
             // Player 1 is out of bounds
             //Debug.Log("Player 1 is out of bounds");
-            loser = "Player 1";
             // Stop scrolling
-            cam1.GetComponent<scroll>().enabled = false;
+            main_cam.GetComponent<scroll>().enabled = false;
             // Stop Player 1 movement
             player1.GetComponent<PlayerMovement>().enabled = false;
+            Bg1.enabled = false;
 
             StartCoroutine(DelayTilRestart());
         }
+
 
         // Players broke crates, reward with bonus points
         if (player1.GetComponent<Powerup>().CheckBonus())
@@ -134,40 +141,39 @@ public class GameManagerSingle : MonoBehaviour
 
         score1.text = "Score: " + (p1Score + p1BonusScore);
 
-        /* AM 05-08-20: Check at a later point to implement power ups in single player
+        // AM 05-08-20: Check at a later point to implement power ups in single player
+        // AM 05-16-20: Added power up's for single player
         // Check if either player picked up a powerup
        if(player1.GetComponent<Powerup>().CheckCamSlowdown())
         {
             // Slow down player 1's cam
-            if(!(cam1.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
+            if(!(main_cam.GetComponent<scroll>().speed - 0.01f <= min_scroll_speed))
             {
-                Debug.Log("Slowing down player 1 cam");
-                cam1.GetComponent<scroll>().speed -= 0.01f;
+                //Debug.Log("Slowing down player 1 cam");
+                speedup1.GetComponent<Animator>().Play("Speedup");
+                main_cam.GetComponent<scroll>().speed -= 0.01f;
             }
-        } else if(player1.GetComponent<Powerup>().CheckSuperJump())
-        {
-            // Make Player 1 jump higher
+        }
 
-        }*/
-        
+        /* Super Jump is handled in player's power up script */
         // Generate a crate
 
         // Crate for player 1
         int selected = Random.Range(0, chance);
-        if (selected == 1)
+        if (selected == 1 && total < max_crates)
         {
-            float minx = cam1.transform.position.x - horizontalMaxDist;
-            float maxx = cam1.transform.position.x + horizontalMaxDist;
-            float miny = cam1.transform.position.y + verticalMaxDist;
-            float maxy = cam1.transform.position.y + (2 * verticalMaxDist);
+            float minx = main_cam.transform.position.x - horizontalMaxDist;
+            float maxx = main_cam.transform.position.x + horizontalMaxDist;
+            float miny = main_cam.transform.position.y + verticalMaxDist;
+            float maxy = main_cam.transform.position.y + (2 * verticalMaxDist);
             ground = GameObject.FindGameObjectsWithTag("Ground");
             int i;
-            for(i = 0; i<ground.Length; i++)
+            for (i = 0; i < ground.Length; i++)
             {
                 // Find good position to place crate
                 float xpos = ground[i].transform.position.x;
                 float ypos = ground[i].transform.position.y;
-                if(xpos > minx && xpos < maxx && ypos > miny && ypos < maxy)
+                if (xpos > minx && xpos < maxx && ypos > miny && ypos < maxy)
                 {
                     break;
                 }
@@ -177,27 +183,29 @@ public class GameManagerSingle : MonoBehaviour
 
             Vector2 pos = new Vector2(x, y);
             Transform new_crate = Instantiate(crate, pos, Quaternion.identity);
+            total++;
         }
 
         // Clean up old crates
         GameObject[] crates = GameObject.FindGameObjectsWithTag("Crate");
-        for(int i=0; i<crates.Length; i++)
+        total = crates.Length;
+        for (int i = 0; i < crates.Length; i++)
         {
-            float c1y = cam1.transform.position.y;
+            float c1y = main_cam.transform.position.y;
             float cratey = crates[i].transform.position.y;
-            if(cratey < c1y-verticalMaxDist)
+            if (cratey < c1y - verticalMaxDist)
             {
                 Destroy(crates[i]);
+                total--;
             }
         }
     }
 
     IEnumerator DelayTilRestart()
     {
-        main_cam.enabled = true;
         if(!gameover)
         {
-            gameover_text.text = gameover_displays[show] + "\n" + loser + " fell off!" +
+            gameover_text.text = gameover_displays[show] + "\n" + " You fell off!" +
             "\n\nPlayer 1: " + (p1Score + p1BonusScore).ToString();
 
             // Display some death message

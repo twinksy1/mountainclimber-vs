@@ -77,11 +77,11 @@ public class UIManagerSingle : MonoBehaviour
             g.SetActive(false);
         }
         
-        if (gameManagerSingle.cam1.GetComponent<scroll>().enabled == false)
+        if (gameManagerSingle.main_cam.GetComponent<scroll>().enabled == false)
         {
             // resume camera's and scrolling for single player
-            gameManagerSingle.cam1.GetComponent<scroll>().enabled = true;
-            gameManagerSingle.cam1.GetComponent<Camera>().enabled = true;
+            gameManagerSingle.main_cam.GetComponent<scroll>().enabled = true;
+            gameManagerSingle.main_cam.GetComponent<Camera>().enabled = true;
         }
 
     }
@@ -96,11 +96,11 @@ public class UIManagerSingle : MonoBehaviour
         }
 
         
-        if (gameManagerSingle.cam1.GetComponent<scroll>().enabled == true)
+        if (gameManagerSingle.main_cam.GetComponent<scroll>().enabled == true)
         {
             // stop camera's and scrolling for single player
-            gameManagerSingle.cam1.GetComponent<scroll>().enabled = false;
-            gameManagerSingle.cam1.GetComponent<Camera>().enabled = false;
+            gameManagerSingle.main_cam.GetComponent<scroll>().enabled = false;
+            gameManagerSingle.main_cam.GetComponent<Camera>().enabled = false;
         }
     }
 
