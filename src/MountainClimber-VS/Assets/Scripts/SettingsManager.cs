@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+// JL 5-11-20 creation of SettingsManager, implemented DontDestroy to pass the object to the main game
 public class SettingsManager : MonoBehaviour
 {
     public Toggle uniqueToggle;
