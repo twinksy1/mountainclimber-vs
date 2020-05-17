@@ -16,8 +16,8 @@ A competitive split-screen multiplayer auto scrolling platformer, drawing inspir
 
 # Controls
 
-| Player 1 | Player 2
--------------- | --------- | ---------
+Category | Player 1 | Player 2
+-------- | -------- | ---------
 Movement:      | W, A, S, D | Arrow keys
 Attack/Action: | left shift | right shift
 Pause Menu:    | p          | p
