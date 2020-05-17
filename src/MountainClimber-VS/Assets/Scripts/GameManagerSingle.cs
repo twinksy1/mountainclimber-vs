@@ -3,7 +3,7 @@
 // Maintained by: Antonio-Angel Medel
 // AM: 04-20-20: tried to make a few names more human readable
 // AM: 05-08-20: updated the original GameManager script to be for single player
-// AM: 05-08-20: added crates, speed up animations, background, and updated Game over for single player
+// AM: 05-16-20: added crates, speed up animations, background, and updated Game over for single player
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
