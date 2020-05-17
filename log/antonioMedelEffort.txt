@@ -4,20 +4,28 @@ comments:
 // AM 05-02-2020: Added attack animation logic using keyboard inputs and animation triggers
 
 // MainMenu.cs - this is the logic for the main menu. It has a function to load levels from the game, control your options, and quit. Vs and single player
-//AM 05-13-2020 since functions were single lines I updated them using arrow syntax
-//AM 05-08-2020: updated script to allow the main menu to load any scene
+// AM 05-13-2020 since functions were single lines I updated them using arrow syntax
+// AM 05-08-2020: updated script to allow the main menu to load any scene
 
 // GeneratorSingle.cs - is a derivative of the original Generator script. 
 // This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
-//AM 5-08-20: updated original generator script to be for single player
+// AM 5-16-20: added timer and variable blocks from vs mode
+// AM 5-16-20: updated comments to reflect single player
+// AM 5-16-20: fixed issue where starting block was starting to close
+// AM 5-08-20: updated original generator script to be for single player
 // generator.cs - This is what controls the generation of walls for the player(s). Our platforms are procedurally generated and this is the logic for it.
+// GeneratorDouble.cs ... (originally generator.cs)
+// AM 5-16-20: updated file description
 
 // GameManagerSingle.cs - is a derivative of the original GameManager Script. 
 // This controls the camera motion. It's also the score keeping logic and the crate generation and countdown.
+// AM: 05-16-20: added crates, speed up animations, background, and updated Game over for single player
+// AM: 05-16-20: Added power up's for single player
 // AM: 05-08-20: updated the original GameManager script to be for single player
 // AM: 05-08-20: Check at a later point to implement power ups in single player
 
 // UIManagerSingle.cs - is a derivative of the original UIManager script that is altered for single player. 
+// AM 05-16-20 updated showPaused() & hidePaused() to get main camera instead of player 1 camera, because we moved scroll to main camera
 // UIManager.cs - This controls the pause menu. It controls taking input from the user to activate the pause menu and pause all objects including cameras.
 // Pause menu allows you to resume play from the moment the player stopped, Restart the level or exit to the main menu.
 // AM: 05-13-20 updated showPaused & hidePaused to pause the cameras. fixes bug where the cameras would keep going
@@ -53,6 +61,9 @@ committed on May 13 I added the original single player script I had. I added the
     Single player angle still needs to be adjusted.
 committed on May 13 Updated the file structure to reflect the final project structure
 committed on May 13 added my individual effort/log file and added updated comments describing what each script does
+committed on May 16 Fixed single player's angle. The background score keeping and crate generation now work like vs mode. 
+    Platform generation also now works as it does in vs mode. Named the unity version more specifically and added controls for the game in the readme. 
+    Updated the file GeneratorDouble.cs to match it's name change
 
 
 

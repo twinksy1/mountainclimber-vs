@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 
 // AM 05-13-20 updated showPaused & hidePaused to pause the cameras. fixes bug where the cameras would keep going
+// AM 05-16-20 updated showPaused() & hidePaused() to get main camera instead of player 1 camera, because we moved scroll to main camera
 public class UIManagerSingle : MonoBehaviour
 {
     GameObject[] pauseObjects;
