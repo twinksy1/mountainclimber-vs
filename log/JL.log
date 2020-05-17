@@ -1,5 +1,8 @@
 Joshua Logue || Contributions
 
+5-17-20: fixed some issues with a few blocks
+	fixed issue with terrain settings after returning to menu
+
 5-15-20: finished implementing biome changes
 	converted existing grass blocks into rock and ice versions
 
