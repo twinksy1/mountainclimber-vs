@@ -1,0 +1,32 @@
+Joshua Logue || Contributions
+
+5-17-20: fixed some issues with a few blocks
+	fixed issue with terrain settings after returning to menu
+
+5-15-20: finished implementing biome changes
+	converted existing grass blocks into rock and ice versions
+
+5-11-20: added counter, variable, and functionality for platform biome change
+    created and implemented SettingsManager script and object to faciliate player-unique terrain
+	added unique terrain setting to options menu
+	fixed camera speedup
+
+5-8-20: implemented camera scroll speedup
+
+5-2-20: generator fixes for walls
+
+4-29-20: modified generation to facilitate two players
+
+4-28-20: created and implemented wall prefabs
+
+4-26-20: added distance checking for wall/platform generation, blocks now spawn infinitely as long as both players progress
+
+4-19-20: small QoL fixes to platform generation
+	added more platform blocks
+
+3-30-20: created a pair of platform "blocks"
+	implemented platform block generation
+
+3-4-20: created platform sprites
+
+2-26-2020: creation of the main menu scene, including options, as well as the accompanying script

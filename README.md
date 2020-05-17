@@ -4,6 +4,8 @@ Project for our software engineering course
 # How to build on Unity
 Unity Version: 2019.3.12f1
 
+Requires TextMeshPro - SHOULD be included baseline with Unity
+
 Click: File > Build Settings > Select appropriate "Target Platform" > Build 
 <a href="https://imgflip.com/gif/3xg0qh"><img src="https://imgflip.com/gif/3xg0qh"/> via Imgflip</a>
 
@@ -13,8 +15,11 @@ Who can get to the top first? Beat your friend climbing the perilous mountain. D
 A competitive split-screen multiplayer auto scrolling platformer, drawing inspiration from classic platformers like Super Mario as well as head-to-head competition featuring disruption similar to Puyo Puyo Tetris.
 
 # Controls
-                                player 1    player 2
-                Movement:       W, A, S, D  Arrow keys
-                Attack/Action:  left shift  right shift
-                Pause Menu:     p           p
-                Options:        Player unique terrain (when in VS Mode, the two players can have unique procedurally generated terrains. Players have the same terrain by default)
+
+Category | Player 1 | Player 2
+-------- | -------- | ---------
+Movement:      | W, A, S, D | Arrow keys
+Attack/Action: | left shift | right shift
+Pause Menu:    | p          | p
+
+Options:        Player unique terrain (when in VS Mode, the two players can have unique procedurally generated terrains. Players have the same terrain by default)

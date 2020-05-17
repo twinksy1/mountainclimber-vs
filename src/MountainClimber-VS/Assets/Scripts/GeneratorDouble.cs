@@ -7,10 +7,14 @@ using UnityEngine;
 public class GeneratorDouble : MonoBehaviour
 {
 
-    //JL 3-20: added the game start instantiation
-    //JL 4-20: added generation on update
-    //JL 4-26-20: added distance checking for wall/platform generation
+    //JL 3-4-20: added the game start instantiation
+    //JL 3-30-20: added generation on update
+    //JL 4-19-20: small fixes
+    //JL 4-26-20: added distance checking for wall/platform generation, blocks now spawn infinitely
     //JL 4-28-20: added wall generation and 2nd player platforms
+    //JL 4-29-20: modified to support a second player and its platforms
+    //JL 5-11-20: added counter, variable, and functionality for platform biome change
+    //JL 5-11-20: implemented settingsmanager from game menu to import unique terrain boolean
     //AM 5-16-20: updated file description
 
     //Lists of prefabs to generate platforms
@@ -61,6 +65,7 @@ public class GeneratorDouble : MonoBehaviour
 
     private void Awake()
     {
+        //Finds the settingsmanager object and its 'uniqueOn' variable
         settings = GameObject.Find("SettingsManager");
         SettingsManager uniqueToggle = settings.GetComponent<SettingsManager>();
         unique = uniqueToggle.uniqueOn;

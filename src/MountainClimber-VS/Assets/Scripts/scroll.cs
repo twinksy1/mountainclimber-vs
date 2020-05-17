@@ -1,5 +1,8 @@
-﻿// JV 05-11-2020: Added speedup animation
+﻿// JL 05-11-2020: Fixed bug where speed wouldn't reset on restart
+// JV 05-11-2020: Added speedup animation
+// JL 05-08-2020: Implemented the ability for the cameras to speedup
 // JV 04-28-2020: Modified code so its applicable to all camera objects
+// JL 03-20-2020: Created, now allows cameras to scroll at a constant rate
 using UnityEngine;
 using TMPro;
 
