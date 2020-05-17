@@ -1,0 +1,18 @@
+Andrew Manz || Contribution Log
+
+5-17-2020: Fixed bugged animation code, added BGM to menus and levels
+
+5-9-2020: Added sprites for powerups
+
+4-29-2020: Added folder with sound clips for animations
+
+4-20-2020: Added second spritesheet with attack animation
+
+3-7-2020: Jump Test added: Implemented both animation and physics for the player character including
+full jump, running, look down, and look up animation code
+
+3-6-2020: Updated Spritesheet psd with more sprites: First Spritesheet done including full walk cycle
+
+3-2-2020: Updated Spritesheet psd with more sprites
+
+2-25-2020: Added Flagsheet to begin making sprites for the project
