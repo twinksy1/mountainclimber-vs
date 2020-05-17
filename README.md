@@ -3,7 +3,9 @@ Project for our software engineering course
 
 # How to build on Unity
 Unity Version: 2019.3.12f1
+
 Requires TextMeshPro - SHOULD be included baseline with Unity
+
 Click: File > Build Settings > Select appropriate "Target Platform" > Build 
 <a href="https://imgflip.com/gif/3xg0qh"><img src="https://imgflip.com/gif/3xg0qh"/> via Imgflip</a>
 
