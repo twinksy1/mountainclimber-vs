@@ -106,8 +106,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // JL - 5-17-20 Fixed a "sticky" settingsmanager object, now
+    // deletes on returning to menu
     public void LoadLevel(string level)
     {
+        if(level == "Menu")
+        {
+            GameObject settings;
+            settings = GameObject.Find("SettingsManager");
+            Destroy(settings);
+        }
         SceneManager.LoadScene(level);
     }
 }

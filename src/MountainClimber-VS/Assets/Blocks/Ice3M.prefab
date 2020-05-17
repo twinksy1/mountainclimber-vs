@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3118023027144641822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8412552, y: 29.611998, z: 0}
+  m_LocalPosition: {x: 7.8, y: 30.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5453066263487436791}
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5453066263487436791}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Ice3M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
