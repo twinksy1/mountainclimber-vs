@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// SettingsManager.cs - controls the settings in our options menu. Right now that is just our unique terrain toggle
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

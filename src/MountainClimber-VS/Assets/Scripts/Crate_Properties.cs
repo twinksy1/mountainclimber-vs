@@ -6,7 +6,7 @@
 // JV: 04-24-2020: Made animation play upon destruction of object
 // JV: 04-23-2020: Applied proper collision detection to crate
 // JV: 04-21-2020: Creation of script
-// Crate object that interacts with players & the environment,
+// Crate_Properties.cs - Crate object that interacts with players & the environment,
 // rewards players with a bonus 10 points when they break it
 using System.Collections;
 using System.Collections.Generic;
